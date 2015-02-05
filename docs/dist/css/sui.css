@@ -3866,6 +3866,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-tabs {
   border-bottom: 1px solid #dddddd;
+  display: block;
+  margin-bottom: 18px;
 }
 .nav-tabs > li {
   float: left;
@@ -3929,6 +3931,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a:focus {
     border-bottom-color: #ffffff;
   }
+}
+.nav-pills {
+  display: block;
+  margin-bottom: 18px;
 }
 .nav-pills > li {
   float: left;
