@@ -8365,7 +8365,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
 
       // add a tag element
 
-      var $tag = $('<span class="tag ' + htmlEncode(tagClass) + (itemTitle !== null ? ('" title="' + itemTitle) : '') + '">' + htmlEncode(itemText) + '<span data-role="remove"><i class="iconfont icon-close-round-sign"></span></span>');
+      var $tag = $('<span class="tag ' + htmlEncode(tagClass) + (itemTitle !== null ? ('" title="' + itemTitle) : '') + '">' + htmlEncode(itemText) + '<span data-role="remove"><i class="iconfont icon-close"></span></span>');
       $tag.data('item', item);
       self.findInputWrapper().before($tag);
       $tag.after(' ');

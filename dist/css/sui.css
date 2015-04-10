@@ -1,4 +1,4 @@
-@import "//at.alicdn.com/t/font_1428479270_1649148.css";
+@import "//at.alicdn.com/t/font_1428634097_9316366.css";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -4815,7 +4815,8 @@ a.label:focus {
 .tag .iconfont {
   position: relative;
   right: -.4em;
-  font-size: 130%;
+  font-size: 120%;
+  font-weight: bold;
   line-height: 100%;
   color: inherit;
   vertical-align: 1px;
