@@ -1,5 +1,5 @@
 .package
-dist/
+/dist/
 docs/dist/
 # Ignore docs files
 _site
