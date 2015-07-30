@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.">
+<meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, bootstrap, front-end, frontend, web development">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+
+<title>
+  
+    插件规范
+  
+</title>
+
+<!-- Bootstrap core CSS -->
+
+<link href="../dist/css/sui.css" rel="stylesheet">
+
+
+
+<!-- Documentation extras -->
+
+<link href="../assets/css/src/docs.css" rel="stylesheet">
+<link href="../assets/css/src/pygments-manni.css" rel="stylesheet">
+
+<!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script src="../assets/js/ie-emulation-modes-warning.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="../dist/js/lib/html5shiv.min.js"></script>
+  <script src="../dist/js/lib/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="http://gtms04.alicdn.com/tps/i4/TB17MaDGpXXXXb7apXXAz6UFXXX-16-16.png">
+
+
+  </head>
+  <body class="bs-docs-home">
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+    <!-- Docs master nav -->
+    <header class="navbar navbar-static-top bs-docs-nav navbar-inverse" id="top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand">SUI</div>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li >
+                    <a href="/">首页</a>
+                </li>
+                <li class="active" >
+                    <a href="../getting-started">入门</a>
+                </li>
+                <li >
+                    <a href="../css">基础样式</a>
+                </li>
+                <li >
+                    <a href="../components">css组件</a>
+                </li>
+                <li >
+                    <a href="../javascript">JS组件</a>
+                </li>
+                <li >
+                    <a href="../plugins">插件规范</a>
+                </li>
+                <li >
+                    <a href="http://g.alicdn.daily.taobao.net/sui/sui-toolkit/0.0.1/">页面搭建工具箱</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://sui.taobao.org/sui/docs" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">访问旧版</a></li>
+                <!-- <li><a href="http://sui.taobao.org" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li> -->
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <!-- Page content of course! -->
+    <div class="container">
+  <div class="bs-docs-section">
+    <h1 class="page-header">插件规范</h1>
+    <p>任何能满足通用需求的插件都可以提交到 SUI 仓库，我们会审核插件并review代码。符合条件的插件会发布到线上。</p>
+
+    <h2>一 开发和入库流程</h2>
+    <p>首先需要fork仓库，sui的仓库地址是：<a href='http://gitlab.alibaba-inc.com/sui/sui3' target='_blank'>http://gitlab.alibaba-inc.com/sui/sui3</a>，点击右上角的 fork 按钮，fork到自己的仓库。</p>
+    <p>在自己的fork中切换到dev分支，然后新建一个自己的分支，分支名以插件的功能命名。比如你的插件是一个对话框，那么分支名就叫 <code>modal</code>。在这个分支下开发自己的代码，完成之后向SUI仓库的dev分支发一个merge request。我们会尽快review代码，并提出修改意见。没有问题之后会合并到dev分支并在下一次发布的时候一起发布到线上。</p>
+    <p>注意dev分支才是最新的主分支，不要动master分支。发完mergerequest之后，可以旺旺通知一下 @任行</p>
+    <p>请确保提交的代码执行grunt之后不会报错。</p>
+
+    <h2>三 CSS插件编写规范</h2>
+    <h3>提取公共依赖</h3>
+    <p>相对于JS插件的独立性，CSS插件可能会有更多依赖。一般情况下，我们需要依赖 <code>variables.less</code> 和 <code>mixins/xxx</code> 两个文件。而插件中对应的一些变量配置和mixin也需要放到这些文件中。</p>
+    <p>可能有些人会有疑问为什么我们要把一个组件自己需要用到的变量和mixin放在一个公共文件中，而不是放在组件自己的less文件中声明。是因为我们要为换肤做考虑，换肤的时候，我们会通过一个皮肤文件覆盖默认的样式。</p>
+    <p>比如你的按钮默认是这么写的：</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.btn-primary</span> <span class="p">{</span>
+  <span class="err">.button-variant(@btn-primary-color;</span> <span class="err">@btn-primary-bg;</span> <span class="err">@btn-primary-border);</span>
+<span class="p">}</span></code></pre></div>
+
+    <p>那么换肤的时候我只需要更改一下变量值，然后调用这个mixin就行了：</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@btn-primary-color</span><span class="p">:</span> <span class="err">#</span><span class="no">red</span><span class="p">;</span> <span class="o">//</span><span class="err">新颜色</span>
+<span class="nc">.btn-primary</span> <span class="p">{</span>
+  <span class="err">.button-variant(@btn-primary-color;</span> <span class="err">@btn-primary-bg;</span> <span class="err">@btn-primary-border);</span>
+<span class="p">}</span></code></pre></div>
+
+    <p>因此需要把 mixin 全部放到一个公共的文件中，这样可以保证在写皮肤的时候不会因为一个mixin而引入以前的整个buttons组件。同理，mixin很可能会依赖一些变量，为了在其他地方调用mixin不会报错，那么这些变量也需要放到公共的 variables.less 文件中。</p>
+    <p>所以判断一个变量或者mixin需不需要独立提取出来的依据就是:有没有可能在换肤功能中用到。</p>
+
+    <h3>variables.less</h3>
+    <p><code>variables.less</code>是最重要的一个依赖文件，里面定义了基础字号、行高、主色、边距等。另外每一个组件的样式配置也会以变量的形式存在其中。</p>
+    <p>其中有几个非常重要的变量，说明如下：</p>
+
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/*
+这几个是基础色，组件的主色调一定要从基础色中来，可以直接使用，也可以经过一定的计算。比如 btn-primary 的颜色就是从 @brand-primary 来的
+*/</span>
+<span class="k">@brand-primary</span><span class="p">:</span>         <span class="m">#28a3ef</span><span class="p">;</span>
+<span class="k">@brand-primary-hover</span><span class="p">:</span>   <span class="m">#4cb9fc</span><span class="p">;</span>
+<span class="k">@brand-success</span><span class="p">:</span>         <span class="m">#43cd6e</span><span class="p">;</span>
+<span class="k">@brand-info</span><span class="p">:</span>            <span class="m">#5bc0de</span><span class="p">;</span>
+<span class="k">@brand-warning</span><span class="p">:</span>         <span class="m">#fac603</span><span class="p">;</span>
+<span class="k">@brand-danger</span><span class="p">:</span>          <span class="m">#ea4a36</span><span class="p">;</span>
+
+<span class="c">/*
+基础字号，如果有在组件中需要用到不同的字号，需要用基础字号做计算得出。而不要随便写死一个值。
+*/</span>
+<span class="k">@font-size-base</span><span class="p">:</span>          <span class="m">12px</span><span class="p">;</span></code></pre></div>
+    <h3>命名规范</h3>
+    <p>禁止在变量名中带有和颜色值，大小等相关的字符，比如这样就是不对的:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.btn-red</span> <span class="p">{}</span>
+<span class="nc">.margin-15px</span> <span class="p">{}</span></code></pre></div>
+
+    <p>因为很有可能我们在换肤或者做样式调整的时候， <code>btn-red</code> 的颜色就被换成了橙色，那么就会出现 <code>btn-red</code> 对应橙色按钮的情况。同理，如果写死了 <code>margin-15px</code>，以后很可能改动之后他实际对应的是 20px 的间距。</p>
+
+    <p>按照SUI的规范，我们的颜色值都是以功能命名，可以参考按钮的命名:</p>
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.btn-primary</span> <span class="p">{}</span>
+<span class="nc">.btn-danger</span> <span class="p">{}</span>
+<span class="nc">.btn-success</span> <span class="p">{}</span>
+<span class="nc">.btn-warning</span> <span class="p">{}</span></code></pre></div>
+
+    <p>大小的命名一律以 <code>-xs</code>, <code>-sm</code>, <code>-lg</code>, <code>-xl</code>的形式来命名，比如</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.btn-xs</span> <span class="p">{}</span>
+<span class="nc">.btn-sm</span> <span class="p">{}</span>
+<span class="nc">.btn-lg</span> <span class="p">{}</span>
+<span class="nc">.btn-xl</span> <span class="p">{}</span></code></pre></div>
+
+    <h3>不要用JS操作CSS属性</h3>
+    <p>如果组件都用户交互导致的样式变化，那么不要直接通过JS操作CSS属性。比如 <code>$container.find(".dropdown-menu").hide()</code>。而是应该通过操作组件容器的class来改变样式。</p>
+    <p>所以隐藏下拉菜单是不会出现 <code>xx.hide()</code> 这样的操作的，而是通过移除 容器上的 <code>.open</code> 类来使菜单隐藏。</p>
+    <p>要把组件的容器当成一个对象，他的 <code>open</code> 类就是一个接口。而不应该去关心内部是如何open的。</p>
+    <p>同样，不要有任何形式的JS动画出现，动画只能以CSS动画的形式存在。</p>
+
+    <h2>二 JS 插件编写规范</h2>
+    <h3>插件基本结构</h3>
+    <p>SUI 所有的JS插件都是标准的 jQuery 插件。以 modal 为例，一个 JS 插件的基本结构如下：</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">+</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
+  <span class="c1">//闭包中的构造方法</span>
+  <span class="kd">var</span> <span class="nx">Modal</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 原型方法</span>
+  <span class="nx">Modal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toggle</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="c1">//默认参数</span>
+  <span class="nx">Modal</span><span class="p">.</span><span class="nx">DEFAULTS</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="c1">//noconflict</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">noConflict</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="c1">//在jQuery对象上提供的静态方法</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="na">alert</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+
+  <span class="c1">//如果有原型方法</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="na">xxx</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+
+  <span class="c1">//代理的事件监听</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click.data-api'</span><span class="p">,</span> <span class="s1">'[data-toggle="modal"]'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">});</span>
+<span class="p">}(</span><span class="nx">jQuery</span><span class="p">);</span></code></pre></div>
+
+    <h3>支持自动初始化</h3>
+    <p>如果你的组件不需要初始化就可以使用，那么是最好的情况。但是大多数情况，可能还需要通过JS初始化才能使用。</p>
+    <p>为了方便使用，我们需要提供一种自动初始化的方法，现在的统一做法是通过 <code>data-toggle=''</code> 的方式来标识需要初始化的组件。自动初始化的代码如下所示：</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'[data-toggle="validate"]'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">validate</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">})</span></code></pre></div>
+    <p>为了保持自动初始化和手动调用 JS API 的结果一致，请不要在自动初始化时做任何除了调用API之外的多余操作。</p>
+
+    <h3>支持data-* 参数配置</h3>
+    <p>因为我们可以通过HTML属性来自动初始化组件，所以要求组件的参数都可以通过 <code>data-*</code> 的形式配置。当然即使是通过JS初始化，也是可以支持 <code>data-*</code> 配置的。</p>
+    <p>一般我们的参数有三种配置，按优先级从高到底分别是：调用JS API传入的配置，通过 <code>data-*</code>配置，默认配置。一般对参数的解析方式如下：</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="p">{},</span>
+  <span class="nx">defaults</span><span class="p">,</span> <span class="c1">//默认配置，优先级最低</span>
+  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(),</span> <span class="c1">//通过 data-* 进行配置</span>
+  <span class="nx">options</span> <span class="c1">//调用JS API传入的配置</span>
+<span class="p">}</span></code></pre></div>
+
+    <h2>三 文档规范</h2>
+    <p>文档一般包含：初始化方法，自定义配置，JS API 说明，事件说明，示例。<p>
+    <p>最重要的是，文档中一定要有丰富的示例。</p>
+  </div>
+</div>
+
+
+    <!-- Footer
+================================================== -->
+<footer class="bs-docs-footer" role="contentinfo">
+  <div class="container">
+    <div class="bs-docs-social">
+  <ul class="bs-docs-social-buttons">
+<!--     <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
+    </li>
+    <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+    </li>
+    <li class="follow-btn">
+      <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @twbootstrap</a>
+    </li>
+    <li class="tweet-btn">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://getbootstrap.com/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Bootstrap">Tweet</a>
+    </li> -->
+  </ul>
+</div>
+
+
+    <p>由 <a href="#">共享业务事业部</a> 和 <a href="#">技术保障部</a> 共同维护。</p>
+    <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    <ul class="bs-docs-footer-links text-muted">
+      <li>Currently v3.3.1</li>
+      <li>&middot;</li>
+      <li><a href="http://gitlab.alibaba-inc.com/sui/sui3">GitLab</a></li>
+      <li>&middot;</li>
+      <li><a href="../getting-started/#examples">Examples</a></li>
+      <li>&middot;</li>
+      <li><a href="../about/">About</a></li>
+      <li>&middot;</li>
+      <li><a href="http://gitlab.alibaba-inc.com/sui/sui3/issues">Issues</a></li>
+      <li>&middot;</li>
+      <li><a href="http://gitlab.alibaba-inc.com/sui/sui3/releases">Releases</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+
+
+  <script src="../dist/js/sui.js"></script>
+
+
+
+  
+  <script src="../assets/js/vendor/holder.js"></script>
+  
+  <script src="../assets/js/vendor/ZeroClipboard.min.js"></script>
+  
+  <script src="../assets/js/src/application.js"></script>
+  
+
+
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61070193-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>
