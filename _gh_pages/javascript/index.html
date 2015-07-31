@@ -406,7 +406,7 @@
   </div>
 </div>
 
-<div class="bs-docs-section">
+<!-- <div class="bs-docs-section">
   <h1 id="transitions" class="page-header">Transitions <small>transition.js</small></h1>
 
   <h3>About transitions</h3>
@@ -414,308 +414,281 @@
   <h3>What's inside</h3>
   <p>Transition.js is a basic helper for <code>transitionEnd</code> events as well as a CSS transition emulator. It's used by the other plugins to check for CSS transition support and to catch hanging transitions.</p>
 </div>
-
+ -->
 <div class="bs-docs-section">
-  <h1 id="modals" class="page-header">Modals <small>modal.js</small></h1>
-  <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
-
-  <div class="bs-callout bs-callout-warning" id="callout-stacked-modals">
-    <h4>Overlapping modals not supported</h4>
-    <p>Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.</p>
-  </div>
-  <div class="bs-callout bs-callout-warning" id="callout-modal-markup-placement">
-  <h4>Modal markup placement</h4>
-    <p>Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality.</p>
-  </div>
-  <div class="bs-callout bs-callout-warning" id="callout-modal-mobile-caveats">
-    <h4>Mobile device caveats</h4>
-    <p>There are some caveats regarding using modals on mobile devices. <a href="../getting-started/#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
-  </div>
-
-  <p><strong class="text-danger">Due to how HTML5 defines its semantics, the <code>autofocus</code> HTML attribute has no effect in Bootstrap modals.</strong> To achieve the same effect, use some custom JavaScript:</p>
-  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'shown'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#myInput'</span><span class="p">).</span><span class="nx">focus</span><span class="p">()</span>
-  <span class="p">})</span></code></pre></div>
-
-  <h2 id="modals-examples">Examples</h2>
-
-  <h3>Static example</h3>
-  <p>A rendered modal with header, body, and set of actions in the footer.</p>
-  <div class="bs-example bs-example-modal" data-example-id="static-modal">
-    <div class="modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h5 class="modal-title">Modal title</h5>
-          </div>
-          <div class="modal-body">
-            <p>One fine body&hellip;</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary btn-lg" data-ok="modal">Save changes</button>
-            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-  </div><!-- /example -->
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;&lt;/button&gt;</span>
-        <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"modal-title"</span><span class="nt">&gt;</span>Modal title<span class="nt">&lt;/h5&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;p&gt;</span>One fine body<span class="ni">&amp;hellip;</span><span class="nt">&lt;/p&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg"</span> <span class="na">data-ok=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Save changes<span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default btn-lg"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.modal-content --&gt;</span>
-  <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.modal-dialog --&gt;</span>
-<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.modal --&gt;</span></code></pre></div>
-
-  <h3>Live demo</h3>
-  <p>Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.</p>
-  <!-- sample modal content -->
-  <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+    <h1 id="modals" class="page-header">Modals <small>modal.js</small></h1>
+    <p>模态框/弹层经过优化后，比以前更加灵活，体积更小，也更加实用</p>
+    <div class="bs-callout bs-callout-warning" id="callout-stacked-modals">
+        <h4>不支持同时打开多个模态框/弹层</h4>
+        <p>在一个模态框/弹层可见的时候请不要打开另外一个，同时展现多个模态框/弹层需要自定义代码。</p>
+    </div>
+    <div class="bs-callout bs-callout-warning" id="callout-modal-markup-placement">
+        <h4>模态框html放置位置</h4>
+        <p>尽量把它放置到document的最顶层(紧挨body)，这样可以避免其他组件影响到模态框/弹层的表现或功能。</p>
+    </div>
+    <div class="bs-callout bs-callout-warning" id="callout-modal-mobile-caveats">
+        <h4>移动设备需要注意</h4>
+        <p>在移动设备上使用模态框/弹层有一些需要注意的地方，推荐使用移动优先的<a href="http://m.sui.taobao.org/">MSUI</a></p>
+    </div>
+    <p><strong class="text-danger">由于html5定义了一些语义化的东西<code>autofocus</code> HTML 属性在模态框上并不会产生效果，</strong>如果你想要实现同样的效果，可以使用一些自定义的javascript语句：</p>
+    <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'shown'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#myInput'</span><span class="p">).</span><span class="nx">focus</span><span class="p">()</span> <span class="p">})</span></code></pre></div>
+    <h2 id="modals-examples">示例</h2>
+    <h3>静态例子</h3>
+    <p>下面的模态框/弹层 包括了头，体以及位于底部的按钮</p>
+    <div class="bs-example bs-example-modal" data-example-id="static-modal">
+        <div class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title">Modal title</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>One fine body&hellip;</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-lg" data-ok="modal">Save changes</button>
+                        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
         </div>
-        <div class="modal-body">
-          <h4>Text in a modal</h4>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-
-          <h4>Popover in a modal</h4>
-          <p>This <a href="#" role="button" class="btn btn-default popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on click.</p>
-
-          <h4>Tooltips in a modal</h4>
-          <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.</p>
-
-          <hr>
-
-          <h4>Overflowing text to show scroll behavior</h4>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <!-- /.modal -->
+    </div>
+    <!-- /example -->
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;&lt;/button&gt;</span>
+                    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"modal-title"</span><span class="nt">&gt;</span>Modal title<span class="nt">&lt;/h5&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;p&gt;</span>One fine body<span class="ni">&amp;hellip;</span><span class="nt">&lt;/p&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg"</span> <span class="na">data-ok=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Save changes<span class="nt">&lt;/button&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default btn-lg"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="c">&lt;!-- /.modal-content --&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="c">&lt;!-- /.modal-dialog --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- /.modal --&gt;</span></code></pre></div>
+    <h3>动态例子</h3>
+    <p>点击下面的按钮会通过js启动一个模态框/弹层，它将从上至下逐渐出现在页面上。</p>
+    <!-- sample modal content -->
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+                </div>
+                <div class="modal-body">
+                    <h4>Text in a modal</h4>
+                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                    <h4>Popover in a modal</h4>
+                    <p>This <a href="#" role="button" class="btn btn-default popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on click.</p>
+                    <h4>Tooltips in a modal</h4>
+                    <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.</p>
+                    <hr>
+                    <h4>Overflowing text to show scroll behavior</h4>
+                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-lg" data-ok="modal">Save changes</button>
+                    <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary btn-lg" data-ok="modal">Save changes</button>
-          <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <div class="bs-example" style="padding-bottom: 24px;">
+        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">
+            Launch demo modal
+        </button>
+    </div>
+    <!-- /example -->
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Button trigger modal --&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary "</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#myModal"</span><span class="nt">&gt;</span>
+        Launch demo modal
+    <span class="nt">&lt;/button&gt;</span>
+    <span class="c">&lt;!-- Modal --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade"</span> <span class="na">id=</span><span class="s">"myModal"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">"myModalLabel"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;&lt;/button&gt;</span>
+                    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"modal-title"</span> <span class="na">id=</span><span class="s">"myModalLabel"</span><span class="nt">&gt;</span>Modal title<span class="nt">&lt;/h5&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
+                    ...
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg"</span> <span class="na">data-ok=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Save changes<span class="nt">&lt;/button&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default btn-lg"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span></code></pre></div>
+    <div class="bs-callout bs-callout-warning" id="callout-modal-accessibility">
+        <h4>增加模态框的可访问性</h4>
+        <p>请务必为 <code>.modal</code> 添加 <code>role="dialog"</code> 和 <code>aria-labelledby="..."</code> 属性，用于指向模态框的标题栏；为 <code>.modal-dialog</code> 添加 <code>aria-hidden="true"</code> 属性。</p>
+        <p>此外，你还应该通过 <code>aria-describedby</code> 属性为模态框 <code>.modal</code> 添加描述性的信息。</p>
+    </div>
+    <h2 id="modals-sizes">可选尺寸</h2>
+    <p>模态框/弹层提供了两种可选尺寸，通过为<code>.modal-dialog</code>增加一个样式类可以实现这种效果</p>
+    <div class="bs-example">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">大弹层</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">小弹层</button>
+    </div>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Large modal --&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">".bs-example-modal-lg"</span><span class="nt">&gt;</span>Large modal<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade bs-example-modal-lg"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">"myLargeModalLabel"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog modal-lg"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+                ...
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- Small modal --&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">".bs-example-modal-sm"</span><span class="nt">&gt;</span>Small modal<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade bs-example-modal-sm"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">"mySmallModalLabel"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog modal-sm"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+                ...
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span></code></pre></div>
+    <!--  Modal content for the above example -->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="myLargeModalLabel">Large modal</h5>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+            <!-- /.modal-content -->
         </div>
-
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-  <div class="bs-example" style="padding-bottom: 24px;">
-    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">
-      Launch demo modal
-    </button>
-  </div><!-- /example -->
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Button trigger modal --&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary "</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#myModal"</span><span class="nt">&gt;</span>
-  Launch demo modal
-<span class="nt">&lt;/button&gt;</span>
-
-<span class="c">&lt;!-- Modal --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade"</span> <span class="na">id=</span><span class="s">"myModal"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">"myModalLabel"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;&lt;/button&gt;</span>
-        <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"modal-title"</span> <span class="na">id=</span><span class="s">"myModalLabel"</span><span class="nt">&gt;</span>Modal title<span class="nt">&lt;/h5&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="mySmallModalLabel">Small modal</h5>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <h2 id="modals-remove-animation">移除动画效果</h2>
+    <p>如果你不需要模态框的动态效果 ，只要删掉<code>.fade</code>样式类就可以了</p>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">""</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
         ...
-      <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg"</span> <span class="na">data-ok=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Save changes<span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default btn-lg"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-
-  <div class="bs-callout bs-callout-warning" id="callout-modal-accessibility">
-    <h4>Make modals accessible</h4>
-    <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title, and <code>aria-hidden="true"</code> to tell assistive technologies to skip the modal's DOM elements.</p>
-    <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
-  </div>
-
-  <div class="bs-callout bs-callout-info" id="callout-modal-youtube">
-    <h4>Embedding YouTube videos</h4>
-    <p>Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. <a href="http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">See this helpful Stack Overflow post</a> for more information.</p>
-  </div>
-
-  <h2 id="modals-sizes">Optional sizes</h2>
-  <p>Modals have two optional sizes, available via modifier classes to be placed on a <code>.modal-dialog</code>.</p>
-  <div class="bs-example">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
-  </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Large modal --&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">".bs-example-modal-lg"</span><span class="nt">&gt;</span>Large modal<span class="nt">&lt;/button&gt;</span>
-
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade bs-example-modal-lg"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">"myLargeModalLabel"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog modal-lg"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
-      ...
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-
-<span class="c">&lt;!-- Small modal --&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">".bs-example-modal-sm"</span><span class="nt">&gt;</span>Small modal<span class="nt">&lt;/button&gt;</span>
-
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade bs-example-modal-sm"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">"mySmallModalLabel"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog modal-sm"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
-      ...
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-
-  <!--  Modal content for the above example -->
-  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h5 class="modal-title" id="myLargeModalLabel">Large modal</h5>
+    <span class="nt">&lt;/div&gt;</span></code></pre></div>
+    <h2 id="modals-related-target">基于不同触发按钮触发弹层</h2>
+    <p>如果使用不同的按钮触发内容差别不大的模态框/弹层,可以使用 <code>event.relatedTarget</code>事件和<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">HTML <code>data-*</code>属性</a> (possibly <a href="http://api.jquery.com/data/">via jQuery</a>)</p>
+    <div class="bs-example" style="padding-bottom: 24px;">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@twbootstrap">Open modal for @twbootstrap</button>
+        ...more buttons...
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Recipient:</label>
+                                <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="control-label">Message:</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-lg" data-ok="modal">Send message</button>
+                        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          ...
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h5 class="modal-title" id="mySmallModalLabel">Small modal</h5>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-  <h2 id="modals-remove-animation">Remove animation</h2>
-  <p>For modals that simply appear rather than fade in to view, remove the <code>.fade</code> class from your modal markup.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">""</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
-  ...
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-
-  <h2 id="modals-related-target">Varying modal content based on trigger button</h2>
-  <p>Have a bunch of buttons that all trigger the same modal, just with slightly different contents? Use <code>event.relatedTarget</code> and <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">HTML <code>data-*</code> attributes</a> (possibly <a href="http://api.jquery.com/data/">via jQuery</a>) to vary the contents of the modal depending on which button was clicked. See the Modal Events docs for details on <code>relatedTarget</code>,</p>
-  <div class="bs-example" style="padding-bottom: 24px;">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@twbootstrap">Open modal for @twbootstrap</button>
+        <!-- /.modal -->
+    </div>
+    <!-- /.bs-example -->
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#exampleModal"</span> <span class="na">data-whatever=</span><span class="s">"@mdo"</span><span class="nt">&gt;</span>Open modal for @mdo<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#exampleModal"</span> <span class="na">data-whatever=</span><span class="s">"@fat"</span><span class="nt">&gt;</span>Open modal for @fat<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#exampleModal"</span> <span class="na">data-whatever=</span><span class="s">"@twbootstrap"</span><span class="nt">&gt;</span>Open modal for @twbootstrap<span class="nt">&lt;/button&gt;</span>
     ...more buttons...
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="recipient-name" class="control-label">Recipient:</label>
-                <input type="text" class="form-control" id="recipient-name">
-              </div>
-              <div class="form-group">
-                <label for="message-text" class="control-label">Message:</label>
-                <textarea class="form-control" id="message-text"></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary btn-lg" data-ok="modal">Send message</button>
-            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div><!-- /.modal -->
-  </div><!-- /.bs-example -->
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#exampleModal"</span> <span class="na">data-whatever=</span><span class="s">"@mdo"</span><span class="nt">&gt;</span>Open modal for @mdo<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#exampleModal"</span> <span class="na">data-whatever=</span><span class="s">"@fat"</span><span class="nt">&gt;</span>Open modal for @fat<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#exampleModal"</span> <span class="na">data-whatever=</span><span class="s">"@twbootstrap"</span><span class="nt">&gt;</span>Open modal for @twbootstrap<span class="nt">&lt;/button&gt;</span>
-...more buttons...
-
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade"</span> <span class="na">id=</span><span class="s">"exampleModal"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">"exampleModalLabel"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;&lt;/button&gt;</span>
-        <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"modal-title"</span> <span class="na">id=</span><span class="s">"exampleModalLabel"</span><span class="nt">&gt;</span>New message<span class="nt">&lt;/h5&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;form&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"recipient-name"</span> <span class="na">class=</span><span class="s">"control-label"</span><span class="nt">&gt;</span>Recipient:<span class="nt">&lt;/label&gt;</span>
-            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"recipient-name"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;/div&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"message-text"</span> <span class="na">class=</span><span class="s">"control-label"</span><span class="nt">&gt;</span>Message:<span class="nt">&lt;/label&gt;</span>
-            <span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"message-text"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
-          <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;/form&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg"</span> <span class="na">data-ok=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Send message<span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default btn-lg"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#exampleModal'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'show'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">relatedTarget</span><span class="p">)</span> <span class="c1">// Button that triggered the modal</span>
-  <span class="kd">var</span> <span class="nx">recipient</span> <span class="o">=</span> <span class="nx">button</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">'whatever'</span><span class="p">)</span> <span class="c1">// Extract info from data-* attributes</span>
-  <span class="c1">// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).</span>
-  <span class="c1">// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.</span>
-  <span class="kd">var</span> <span class="nx">modal</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
-  <span class="nx">modal</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.modal-title'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">'New message to '</span> <span class="o">+</span> <span class="nx">recipient</span><span class="p">)</span>
-  <span class="nx">modal</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.modal-body input'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">recipient</span><span class="p">)</span>
-<span class="p">})</span></code></pre></div>
-
-  <h2 id="modals-usage">Usage</h2>
-  <p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.modal-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
-
-  <h3>Via data attributes</h3>
-  <p>Activate a modal without writing JavaScript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#myModal"</span><span class="nt">&gt;</span>Launch modal<span class="nt">&lt;/button&gt;</span></code></pre></div>
-
-  <h3>Via JavaScript</h3>
-  <p>Call a modal with id <code>myModal</code> with a single line of JavaScript:</p>
-  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span></code></pre></div>
-
-  <h3 id="modals-options">Options</h3>
-  <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.</p>
-  <div class="table-responsive">
-    <pre><code>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade"</span> <span class="na">id=</span><span class="s">"exampleModal"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">"exampleModalLabel"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;&lt;/button&gt;</span>
+                    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"modal-title"</span> <span class="na">id=</span><span class="s">"exampleModalLabel"</span><span class="nt">&gt;</span>New message<span class="nt">&lt;/h5&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;form&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"recipient-name"</span> <span class="na">class=</span><span class="s">"control-label"</span><span class="nt">&gt;</span>Recipient:<span class="nt">&lt;/label&gt;</span>
+                            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"recipient-name"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"message-text"</span> <span class="na">class=</span><span class="s">"control-label"</span><span class="nt">&gt;</span>Message:<span class="nt">&lt;/label&gt;</span>
+                            <span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"message-text"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;/form&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg"</span> <span class="na">data-ok=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Send message<span class="nt">&lt;/button&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default btn-lg"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span></code></pre></div> <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#exampleModal'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'show'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span> <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">relatedTarget</span><span class="p">)</span> <span class="c1">// Button that triggered the modal var recipient = button.data('whatever') // Extract info from data-* attributes // If necessary, you could initiate an AJAX request here (and then do the updating in a callback). // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead. var modal = $(this) modal.find('.modal-title').text('New message to ' + recipient) modal.find('.modal-body input').val(recipient) })</span></code></pre></div>
+    <h2 id="modals-usage">使用方法</h2>
+    <p>通过 data 属性或 JavaScript 调用模态框插件，可以根据需要动态展示隐藏的内容。模态框弹出时还会为 <code>&lt;body&gt;</code> 元素添加 <code>.modal-open</code> 类，从而覆盖页面默认的滚动行为，并且还会自动生成一个 <code>.modal-backdrop</code> 元素用于提供一个可点击的区域，点击此区域就即可关闭模态框。</p>
+    <h3>使用data属性</h3>
+    <p>通过js脚本激活一个模态框，需要设置<code>data-toggle="modal"</code>或者<code>data-target="#foo"</code>再或者<code>href="#foo"</code>属性到一个能够触发事件的元素上（比如说一个button） <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#myModal"</span><span class="nt">&gt;</span>Launch modal<span class="nt">&lt;/button&gt;</span></code></pre></div>
+        <h3>使用js</h3>
+        <p>通过一行js语句调用id为<code>myModal</code> 的模态框：</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span></code></pre></div>
+        <h3 id="modals-options">可选项</h3>
+        <p>可选项可以通过data属性或者js脚本添加。如果使用data属性，要将其命名为<code>data-</code>的形式，例如<code>data-backdrop=""</code>.</p>
+        <div class="table-responsive">
+            <pre><code>
    /* 弹层静态方法，用于很少重复，不需记住状态的弹层，可方便的直接调用，最简单形式就是$.alert('我是alert') 或$.confirm('我是confirm') 或 $.confirm(options)
    * 若弹层内容是复杂的Dom结构， 建议将弹层html结构写到模版里，用$(xx).modal(options) 或无js的方式调用
    *
@@ -749,118 +722,74 @@
    *
    */
     </code></pre>
-
-  </div><!-- /.table-responsive -->
-
-  <h3 id="modals-methods">Methods</h3>
-
-  <h4>.modal(options)</h4>
-  <p>Activates your content as a modal. Accepts an optional options <code>object</code>.</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">({</span>
-  <span class="na">keyboard</span><span class="p">:</span> <span class="kc">false</span>
-<span class="p">})</span></code></pre></div>
-
-  <h4>.modal('toggle')</h4>
-  <p>Manually toggles a modal. <strong>Returns to the caller before the modal has actually been shown or hidden</strong> (i.e. before the <code>shown</code> or <code>hidden</code> event occurs).</p>
-  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'toggle'</span><span class="p">)</span></code></pre></div>
-
-  <h4>.modal('show')</h4>
-  <p>Manually opens a modal. <strong>Returns to the caller before the modal has actually been shown</strong> (i.e. before the <code>shown</code> event occurs).</p>
-  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span></code></pre></div>
-
-  <h4>.modal('hide')</h4>
-  <p>Manually hides a modal. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden</code> event occurs).</p>
-  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">)</span></code></pre></div>
-
-  <h4>.modal('okHide')</h4>
-  <p>手动关闭弹层并触发okHide逻辑. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden</code> event occurs).</p>
-  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'okHide'</span><span class="p">)</span></code></pre></div>
-
-  <h4>.modal('handleUpdate')</h4>
-  <p>执行一次自适应。用于弹层高度发生变化时。(当浏览器窗口resize时会自动自适应)</p>
-  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'handleUpdate'</span><span class="p">)</span></code></pre></div>
-
-  <h3 id="modals-events">Events</h3>
-  <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped bs-events-table">
-      <thead>
-       <tr>
-         <th style="width: 150px;">Event Type</th>
-         <th>Description</th>
-       </tr>
-      </thead>
-      <tbody>
-       <tr>
-         <td>show</td>
-         <td>This event fires immediately when the <code>show</code> instance method is called. If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
-       </tr>
-       <tr>
-         <td>shown</td>
-         <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete). If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
-       </tr>
-       <tr>
-         <td>hide</td>
-         <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
-       </tr>
-       <tr>
-         <td>hidden</td>
-         <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
-       </tr>
-       <tr>
-         <td>okHide</td>
-         <td>This event is fired immediately when the <code>hide</code> instance method has been called.其他不变，不过是点击了“确认”按钮时执行的回调，返回false可阻止弹层关闭</td>
-       </tr>
-       <tr>
-         <td>okHidden</td>
-         <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).点击“确认”按钮后弹层已经关闭后的回调</td>
-       </tr>
-       <tr>
-         <td>okHide</td>
-         <td>This event is fired immediately when the <code>hide</code> instance method has been called.其他不变，不过是点击了除“确认”按钮外其他原因导致弹层关闭时执行的回调</td>
-       </tr>
-       <tr>
-         <td>okHidden</td>
-         <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).点击了除“确认”按钮外其他原因导致弹层关闭完毕后执行的回调</td>
-       </tr>
-       <tr>
-         <td>loaded</td>
-         <td><code>new</code> This event is fired when the modal has loaded content using the <code>remote</code> option.</td>
-       </tr>
-      </tbody>
-    </table>
-  </div><!-- /.table-responsive -->
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'hidden'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// do something...</span>
-<span class="p">})</span></code></pre></div>
-
-  <h3 id="modals-shortcat">快捷方式</h3>
-  <p>我们为常用的两种对话框 <code>$.alert</code> 和 <code>$.confirm</code>建立了快捷方式。使用方式如下所示:</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">//弹出一条消息</span>
-<span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">"消息内容"</span><span class="p">);</span>  
-
-<span class="c1">//弹出一条消息并设置回调</span>
-<span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">"这里消息内容"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">//关闭alert的回调</span>
-<span class="p">});</span>
-
-<span class="c1">//弹出一条消息，同时设置了消息标题，消息内容，和回调函数</span>
-<span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">"消息标题"</span><span class="p">,</span> <span class="s2">"这是消息内容"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">//关闭alert的回调</span>
-<span class="p">});</span>
-
-<span class="c1">//显示一个确认框</span>
-<span class="nx">$</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s2">"这是消息内容"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">//这里是点击确定按钮的回调</span>
-  <span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">//这里是点击取消按钮的回调</span>
-  <span class="p">});</span>
-
-<span class="nx">$</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s2">"消息标题"</span><span class="p">,</span> <span class="s2">"这是消息内容"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">//这里是点击确定按钮的回调</span>
-  <span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">//这里是点击取消按钮的回调</span>
-  <span class="p">});</span></code></pre></div>
+        </div>
+        <!-- /.table-responsive -->
+        <h3 id="modals-methods">方法</h3>
+        <h4>.modal(options)</h4>
+        <p>将页面中的某块内容作为模态框激活。接受可选参数<code>object</code>.</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">({</span> <span class="na">keyboard</span><span class="p">:</span> <span class="kc">false</span> <span class="p">})</span></code></pre></div>
+        <h4>.modal('toggle')</h4>
+        <p>手动打开或关闭模态框。<strong>在模态框显示或隐藏之前返回到调用函数中</strong>（也就是，在触发 <code>shown.bs.modal</code> 或 <code>hidden.bs.modal</code> 事件之前）。</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'toggle'</span><span class="p">)</span></code></pre></div>
+        <h4>.modal('show')</h4>
+        <p>手动打开模态框。<strong>在模态框显示之前返回到调用函数中</strong> （也就是，在触发 <code>shown.bs.modal</code> 事件之前）。</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span></code></pre></div>
+        <h4>.modal('hide')</h4>
+        <p>手动隐藏模态框。<strong>在模态框隐藏之前返回到调用函数中</strong> （也就是，在触发 <code>hidden.bs.modal</code> 事件之前）。</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">)</span></code></pre></div>
+        <h4>.modal('okHide')</h4>
+        <p>手动关闭弹层并触发okHide逻辑. <strong>在模态框隐藏之前返回到调用函数中</strong> (i.e. before the <code>hidden</code> event occurs).</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'okHide'</span><span class="p">)</span></code></pre></div>
+        <h4>.modal('handleUpdate')</h4>
+        <p>执行一次自适应。用于弹层高度发生变化时。(当浏览器窗口resize时会自动自适应)</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'handleUpdate'</span><span class="p">)</span></code></pre></div>
+        <h3 id="modals-events">事件</h3>
+        <p>模态框暴露了一些事件可以用于监听并执行你自己的代码。</p>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped bs-events-table">
+                <thead>
+                    <tr>
+                        <th style="width: 150px;">事件类型</th>
+                        <th>描述</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>show</td>
+                        <td>当<code>show</code>实例方法被调用时，事件会立即执行. 如果是通过click事件调用的，click的那个元素的<code>relatedTarget</code>属性将是可用的</td>
+                    </tr>
+                    <tr>
+                        <td>shown</td>
+                        <td>这个事件将会在模态框对用户可见时被调用（css动画结束后）如果是通过click事件调用的，click的那个元素的<code>relatedTarget</code>属性将是可用的</td>
+                    </tr>
+                    <tr>
+                        <td>hide</td>
+                        <td>事件将在<code>hide</code>实例方法被调用后执行.</td>
+                    </tr>
+                    <tr>
+                        <td>hidden</td>
+                        <td>事件会在模态框对用户不可见（css动画结束）后调用</td>
+                    </tr>
+                    <tr>
+                        <td>okHide</td>
+                        <td>事件会在调用了<code>hide</code> 实例方法后执行.其他不变，不过是点击了“确认”按钮时执行的回调，返回false可阻止弹层关闭</td>
+                    </tr>
+                    <tr>
+                        <td>okHidden</td>
+                        <td>事件在模态框对用户不可见（css动画结束）后执行，点击“确认”按钮后弹层已经关闭后的回调</td>
+                    </tr>
+                    <tr>
+                        <td>loaded</td>
+                        <td><code>new</code> 事件将会在模态框使用 <code>remote</code> 参数加载完内容后被调用</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'hidden'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// do something... })</span></code></pre></div>
+        <h3 id="modals-shortcat">快捷方式</h3>
+        <p>我们为常用的两种对话框 <code>$.alert</code> 和 <code>$.confirm</code>建立了快捷方式。使用方式如下所示:</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">//弹出一条消息 $.alert("消息内容"); //弹出一条消息并设置回调 $.alert("这里消息内容", function() { //关闭alert的回调 }); //弹出一条消息，同时设置了消息标题，消息内容，和回调函数 $.alert("消息标题", "这是消息内容", function() { //关闭alert的回调 }); //显示一个确认框 $.confirm("这是消息内容", function() { //这里是点击确定按钮的回调 }, function() { //这里是点击取消按钮的回调 }); $.confirm("消息标题", "这是消息内容", function() { //这里是点击确定按钮的回调 }, function() { //这里是点击取消按钮的回调 });</span></code></pre></div>
 </div>
 
 <div class="bs-docs-section">
