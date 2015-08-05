@@ -42,7 +42,7 @@
 
   <div class="bs-callout bs-callout-danger" id="callout-tooltip-opt-in">
     <h4>选择性加入的功能</h4>
-    <p>出于性能的考虑，tooltip和popover的数据api都是选择加入的，这意味着 <strong>，你必须受到初始化它们</strong>。</p>
+    <p>出于性能的考虑，tooltip和popover的数据api都是选择加入的，这意味着 <strong>，你必须手动初始化它们</strong>。</p>
     <p>其中一种初始化tooltips的方法是选中它们的<code>data-toggle</code> 属性:</p>
 {% highlight js %}
 $(function () {
@@ -147,17 +147,17 @@ $('#example').tooltip(options)
           <td>selector</td>
           <td>string</td>
           <td>false</td>
-          <td>If a selector is provided, tooltip objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have tooltips added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsbin.com/zopod/1/edit">an informative example</a>.</td>
+          <td>如果提供了选择器的话，tooltip将会被委托到指定的目标上。实际上，这可以用于给动态html内容增加tooltip。参考 <a href="https://github.com/twbs/bootstrap/issues/4215">这个例子</a> and <a href="http://jsbin.com/zopod/1/edit">这一个</a>.</td>
         </tr>
         <tr>
           <td>template</td>
           <td>string</td>
           <td><code>'&lt;div class="tooltip" role="tooltip"&gt;&lt;div class="tooltip-arrow"&gt;&lt;/div&gt;&lt;div class="tooltip-inner"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
           <td>
-            <p>Base HTML to use when creating the tooltip.</p>
-            <p>The tooltip's <code>title</code> will be injected into the <code>.tooltip-inner</code>.</p>
-            <p><code>.tooltip-arrow</code> will become the tooltip's arrow.</p>
-            <p>The outermost wrapper element should have the <code>.tooltip</code> class.</p>
+            <p>创建tooltip时需要指定的基本html</p>
+            <p>tooltip的 <code>title</code> 将会被注入进<code>.tooltip-inner</code>.</p>
+            <p><code>.tooltip-arrow</code> 将会是tooltip的箭头</p>
+            <p>在最外层的包裹元素将会有 <code>.tooltip</code>样式类.</p>
           </td>
         </tr>
         <tr>
@@ -165,51 +165,51 @@ $('#example').tooltip(options)
           <td>string | function</td>
           <td>''</td>
           <td>
-            <p>Default title value if <code>title</code> attribute isn't present.</p>
-            <p>If a function is given, it will be called with its <code>this</code> reference set to the element that the tooltip is attached to.</p>
+            <p>title的默认值，如果<code>title</code>属性没有设置</p>
+            <p>如果给定一个函数，它将会将<code>this</code>引用设置到附加tooltip的元素上。</p>
           </td>
         </tr>
         <tr>
           <td>trigger</td>
           <td>string</td>
           <td>'hover focus'</td>
-          <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</td>
+          <td>tooltip会通过什么方式出发 - click | hover | focus | manual. 可以传递多个出发源; 将他们通过空格分开.</td>
         </tr>
         <tr>
           <td>viewport</td>
           <td>string | object</td>
           <td>{ selector: 'body', padding: 0 }</td>
           <td>
-            <p>Keeps the tooltip within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ "selector": "#viewport", "padding": 0 }</code></p>
+            <p>保证tooltip在元素边界内. Example: <code>viewport: '#viewport'</code> or <code>{ "selector": "#viewport", "padding": 0 }</code></p>
           </td>
         </tr>
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
   <div class="bs-callout bs-callout-info" id="callout-tooltip-data">
-    <h4>Data attributes for individual tooltips</h4>
-    <p>Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.</p>
+    <h4>用于单个tooltip的属性</h4>
+    <p>正如上面所说的，个别的tooltip参数也可以通过使用data属性的方式指定.</p>
   </div>
 
-  <h3 id="tooltips-methods">Methods</h3>
+  <h3 id="tooltips-methods">方法</h3>
 
   <h4>$().tooltip(options)</h4>
-  <p>Attaches a tooltip handler to an element collection.</p>
+  <p>在指定的元素集上实现tooltip.</p>
 
   <h4>.tooltip('show')</h4>
-  <p>Reveals an element's tooltip. Tooltips with zero-length titles are never displayed.</p>
+  <p>显示一个元素的tooltip，没有标题的tooltip将不会显示</p>
   {% highlight js %}$('#element').tooltip('show'){% endhighlight %}
 
   <h4>.tooltip('hide')</h4>
-  <p>Hides an element's tooltip.</p>
+  <p>隐藏元素的tooltip</p>
   {% highlight js %}$('#element').tooltip('hide'){% endhighlight %}
 
   <h4>.tooltip('toggle')</h4>
-  <p>Toggles an element's tooltip.</p>
+  <p>切换元素的tooltip效果</p>
   {% highlight js %}$('#element').tooltip('toggle'){% endhighlight %}
 
   <h4>.tooltip('destroy')</h4>
-  <p>Hides and destroys an element's tooltip.</p>
+  <p>隐藏并销毁元素的tooltip</p>
   {% highlight js %}$('#element').tooltip('destroy'){% endhighlight %}
 
   <h3 id="tooltips-events">Events</h3>
@@ -224,20 +224,20 @@ $('#example').tooltip(options)
       <tbody>
         <tr>
           <td>show</td>
-          <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+          <td>该事件会在<code>show</code>实例方法调用后即刻发生.</td>
         </tr>
         <tr>
           <td>shown</td>
-          <td>This event is fired when the tooltip has been made visible to the user (will wait for CSS transitions to complete).</td>
+          <td>该事件会在tooltip对用户可见时发生(将会等待css动画结束).</td>
         </tr>
         <tr>
           <td>hide</td>
-          <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+          <td>该事件会在 <code>hide</code>实例方法调用后即刻发生</td>
         </tr>
         <tr>
           <td>hidden</td>
-          <td>This event is fired when the tooltip has finished being hidden from the user (will wait for CSS transitions to complete).</td>
-        </tr>
+          <td>该事件会在tooltip对用户不可见时发生(将会等待css动画结束).</td>
+        </tr>s
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
