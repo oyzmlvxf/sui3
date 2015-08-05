@@ -1,8 +1,8 @@
 <div class="bs-docs-section">
-  <h1 id="scrollspy" class="page-header">ScrollSpy <small>scrollspy.js</small></h1>
+  <h1 id="scrollspy" class="page-header">滚动监听 <small>scrollspy.js</small></h1>
 
-  <h2 id="scrollspy-examples">Example in navbar</h2>
-  <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.</p>
+  <h2 id="scrollspy-examples">导航条实例</h2>
+  <p>滚动监听插件是用来根据滚动条所处的位置来自动更新导航。 滚动导航条下面的区域并关注导航项的变化。下拉菜单中的条目也会自动高亮显示。</p>
   <div class="bs-example" data-example-id="embedded-scrollspy">
     <nav id="navbar-example2" class="navbar navbar-default navbar-static">
       <div class="container-fluid">
@@ -49,26 +49,26 @@
   </div><!-- /example -->
 
 
-  <h2 id="scrollspy-usage">Usage</h2>
+  <h2 id="scrollspy-usage">使用方法</h2>
 
   <div class="bs-callout bs-callout-warning" id="callout-scrollspy-needs-nav">
-    <h4>Requires Bootstrap nav</h4>
-    <p>Scrollspy currently requires the use of a <a href="../components/#nav">Bootstrap nav component</a> for proper highlighting of active links.</p>
+    <h4>依赖 Bootstrap 的导航组件</h4>
+    <p>滚动监听插件依赖 <a href="../components/#nav">Bootstrap nav component</a>用于高亮显示当前激活的链接。</p>
   </div>
   <div class="bs-callout bs-callout-danger" id="callout-scrollspy-target-ids">
-    <h4>Resolvable ID targets required</h4>
-    <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
+    <h4>需要可分解的具有ID的目标</h4>
+    <p>导航条必须有可分解的具有ID的目标，例如<code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> 必须与DOM中的形如<code>&lt;div id="home"&gt;&lt;/div&gt;</code>的元素相对应.</p>
   </div>
   <div class="bs-callout bs-callout-info" id="callout-scrollspy-invisible-targets">
-    <h4>Non-<code>:visible</code> target elements ignored</h4>
-    <p>Target elements that are not <a href="http://api.jquery.com/visible-selector/"><code>:visible</code> according to jQuery</a> will be ignored and their corresponding nav items will never be highlighted.</p>
+    <h4>不是<code>:visible</code>目标将会被忽略</h4>
+    <p>不是<a href="http://api.jquery.com/visible-selector/"><code>:visible</code> according to jQuery</a> 的目标元素将会被忽略，与它们对应的导航条条目也不会高亮。</p>
   </div>
 
-  <h3>Requires relative positioning</h3>
-  <p>No matter the implementation method, scrollspy requires the use of <code>position: relative;</code> on the element you're spying on. In most cases this is the <code>&lt;body&gt;</code>.</p>
+  <h3>需要相对定位</h3>
+  <p>无论何种实现方式，滚动监听都需要被监听的组件是<code>position: relative;</code>属性，大多数时候我们都是在监听<code>&lt;body&gt;</code>.</p>
 
-  <h3>Via data attributes</h3>
-  <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>). Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
+  <h3>通过data属性调用</h3>
+  <p>想要轻松的给你的导航条增加滚动监听行为，增加<code>data-spy="scroll"</code> 到你想要监听的元素上(大多数情况会是<code>&lt;body&gt;</code>). 然后增加<code>data-target</code> 属性，值是任意Bootstrap<code>nav</code>组件的父元素的ID或class.
 {% highlight css %}
 body {
   position: relative;
@@ -86,16 +86,16 @@ body {
 </body>
 {% endhighlight %}
 
-  <h3>Via JavaScript</h3>
-  <p>After adding <code>position: relative;</code> in your CSS, call the scrollspy via JavaScript:</p>
+  <h3>通过javascript</h3>
+  <p>在CSS中加入<code>position: relative;</code>之后,通过javascript调用滚动监听</p>
 {% highlight js %}
 $('body').scrollspy({ target: '.navbar-example' })
 {% endhighlight %}
 
 
-  <h3 id="scrollspy-methods">Methods</h3>
+  <h3 id="scrollspy-methods">方法</h3>
   <h4>.scrollspy('refresh')</h4>
-  <p>When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:</p>
+  <p>当使用滚动监听插件的同时在 DOM 中添加或删除元素后，你需要像下面这样调用此刷新（ refresh） 方法：</p>
 {% highlight js %}
 $('[data-spy="scroll"]').each(function () {
   var $spy = $(this).scrollspy('refresh')
@@ -103,8 +103,8 @@ $('[data-spy="scroll"]').each(function () {
 {% endhighlight %}
 
 
-  <h3 id="scrollspy-options">Options</h3>
-  <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.</p>
+  <h3 id="scrollspy-options">参数</h3>
+  <p>可以通过 data 属性或 JavaScript 传递参数。对于 data 属性，其名称是将参数名附着到<code>data-</code>后面组成,例如<code>data-offset=""</code>.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -120,13 +120,13 @@ $('[data-spy="scroll"]').each(function () {
          <td>offset</td>
          <td>number</td>
          <td>10</td>
-         <td>Pixels to offset from top when calculating position of scroll.</td>
+         <td>计算滚动位置相对于顶部的偏移量（像素数）</td>
        </tr>
       </tbody>
     </table>
   </div><!-- ./bs-table-responsive -->
 
-  <h3 id="scrollspy-events">Events</h3>
+  <h3 id="scrollspy-events">事件</h3>
   <div class="table-responsive">
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
@@ -138,7 +138,7 @@ $('[data-spy="scroll"]').each(function () {
       <tbody>
        <tr>
          <td>activate.bs.scrollspy</td>
-         <td>This event fires whenever a new item becomes activated by the scrollspy.</td>
+         <td>每当一个新条目被激活后都将由滚动监听插件触发此事件。</td>
       </tr>
       </tbody>
     </table>
