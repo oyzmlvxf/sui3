@@ -2321,10 +2321,10 @@ itemText: function(item) {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="tabs" class="page-header">Togglable tabs <small>tab.js</small></h1>
+  <h1 id="tabs" class="page-header">标签页（选项卡）<small>tab.js</small></h1>
 
   <h2 id="tabs-examples">Example tabs</h2>
-  <p>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.</p>
+  <p>通过这个插件可以添加动态快速的标签功能到局部的某个位置中，甚至是在一个下拉菜单中。注意：并不支持嵌套的标签页.</p>
   <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
     <ul id="myTab" class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Home</a></li>
@@ -2354,28 +2354,28 @@ itemText: function(item) {
   </div><!-- /example -->
 
   <div class="bs-callout bs-callout-info" id="callout-tabs-extends-component">
-    <h4>Extends tabbed navigation</h4>
-    <p>This plugin extends the <a href="../components/#nav-tabs">tabbed navigation component</a> to add tabbable areas.</p>
+    <h4>拓展的标签导航</h4>
+    <p>这个插件使得<a href="../components/#nav-tabs">标签导航组件</a> 能够被添加到标签区域</p>
   </div>
 
 
-  <h2 id="tabs-usage">Usage</h2>
-  <p>Enable tabbable tabs via JavaScript (each tab needs to be activated individually):</p>
+  <h2 id="tabs-usage">用法</h2>
+  <p>通过js启用标签组件 (每个标签需要单独被激活):</p>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myTab a'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
   <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">tab</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span>
 <span class="p">})</span></code></pre></div>
 
-  <p>You can activate individual tabs in several ways:</p>
+  <p>可以通过以下几种方式激活:</p>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myTab a[href="#profile"]'</span><span class="p">).</span><span class="nx">tab</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span> <span class="c1">// Select tab by name</span>
 <span class="nx">$</span><span class="p">(</span><span class="s1">'#myTab a:first'</span><span class="p">).</span><span class="nx">tab</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span> <span class="c1">// Select first tab</span>
 <span class="nx">$</span><span class="p">(</span><span class="s1">'#myTab a:last'</span><span class="p">).</span><span class="nx">tab</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span> <span class="c1">// Select last tab</span>
 <span class="nx">$</span><span class="p">(</span><span class="s1">'#myTab li:eq(2) a'</span><span class="p">).</span><span class="nx">tab</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span> <span class="c1">// Select third tab (0-indexed)</span></code></pre></div>
 
-  <h3>Markup</h3>
-  <p>You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap <a href="../components/#nav-tabs">tab styling</a>, while adding the <code>nav</code> and <code>nav-pills</code> classes will apply <a href="../components/#nav-pills">pill styling</a>.</p>
+  <h3>标记</h3>
+  <p>你也可以不使用js，只通过在元素上简单的指定激活一个标签或者胶囊导航<code>data-toggle="tab"</code>或者<code>data-toggle="pill"</code>. 增加<code>nav</code> 和 <code>nav-tabs</code>样式类到标签上<code>ul</code>将会应用<a href="../components/#nav-tabs">标签样式</a>, 与此同时增加 <code>nav</code> 和 <code>nav-pills</code> 样式类将会应用<a href="../components/#nav-pills">胶囊样式</a>.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>
 
   <span class="c">&lt;!-- Nav tabs --&gt;</span>
@@ -2396,8 +2396,8 @@ itemText: function(item) {
 
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h3>Fade effect</h3>
-  <p>To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>. The first tab pane must also have <code>.in</code> to properly fade in initial content.</p>
+  <h3>渐隐效果</h3>
+  <p>想要让标签具有渐隐效果，增加<code>.fade</code>到各个<code>.tab-pane</code>. 且第一个标签必须有<code>.in</code>用来初始化</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">class=</span><span class="s">"tab-pane fade in active"</span> <span class="na">id=</span><span class="s">"home"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"profile"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
@@ -2405,10 +2405,10 @@ itemText: function(item) {
   <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"settings"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h3 id="tabs-methods">Methods</h3>
+  <h3 id="tabs-methods">方法</h3>
   <h4>$().tab</h4>
   <p>
-    Activates a tab element and content container. Tab should have either a <code>data-target</code> or an <code>href</code> targeting a container node in the DOM.
+    激活一个标签和内容容器，标签应该有一个<code>data-target</code>或者 <code>href</code>指向一个DOM中的容器节点。
   </p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">role=</span><span class="s">"tablist"</span> <span class="na">id=</span><span class="s">"myTab"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">"presentation"</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#home"</span> <span class="na">aria-controls=</span><span class="s">"home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
@@ -2430,15 +2430,15 @@ itemText: function(item) {
   <span class="p">})</span>
 <span class="nt">&lt;/script&gt;</span></code></pre></div>
 
-  <h3 id="tabs-events">Events</h3>
-  <p>When showing a new tab, the events fire in the following order:</p>
+  <h3 id="tabs-events">事件</h3>
+  <p>在现实一个新的标签时，事件将会按以下顺序触发</p>
   <ol>
-    <li><code>hide.bs.tab</code> (on the current active tab)</li>
-    <li><code>show.bs.tab</code> (on the to-be-shown tab)</li>
-    <li><code>hidden.bs.tab</code> (on the previous active tab, the same one as for the <code>hide.bs.tab</code> event)</li>
-    <li><code>shown.bs.tab</code> (on the newly-active just-shown tab, the same one as for the <code>show.bs.tab</code> event)</li>
+    <li><code>hide.bs.tab</code> (在当前活动的标签页)</li>
+    <li><code>show.bs.tab</code> (在即将被显示的标签页)</li>
+    <li><code>hidden.bs.tab</code> (在先前活动的标签页, 同样 <code>hide.bs.tab</code> 事件也是如此)</li>
+    <li><code>shown.bs.tab</code> (在被激活后，刚刚开始显示的标签页。<code>show.bs.tab</code> 事件也是这样)</li>
   </ol>
-  <p>If no tab was already active, then the <code>hide.bs.tab</code> and <code>hidden.bs.tab</code> events will not be fired.</p>
+  <p>如果没有已经被激活的标签,那么<code>hide.bs.tab</code>和<code>hidden.bs.tab</code>事件将不会被触发</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
@@ -2450,19 +2450,19 @@ itemText: function(item) {
       <tbody>
        <tr>
          <td>show</td>
-         <td>This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
+         <td>该事件在标签页显示时触发，但是必须在新标签页被显示之前。分别使用<code>event.target</code> 和 <code>event.relatedTarget</code> 来定位到激活的标签页和前一个激活的标签页。</td>
       </tr>
       <tr>
          <td>shown</td>
-         <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
+         <td>该事件在标签页显示时触发，但是必须在某个标签页已经显示之后。 分别使用<code>event.target</code> and <code>event.relatedTarget</code>来定位到激活的标签页和前一个激活的标签页。</td>
        </tr>
        <tr>
          <td>hide</td>
-         <td>This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the current active tab and the new soon-to-be-active tab, respectively.</td>
+         <td>该事件在新标签将要显示（即先前的标签将要隐藏）。分别使用<code>event.target</code> 和 <code>event.relatedTarget</code> 指向当前活动标签和即将活动的标签</td>
        </tr>
        <tr>
          <td>hidden</td>
-         <td>This event fires after a new tab is shown (and thus the previous active tab is hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the previous active tab and the new active tab, respectively.</td>
+         <td>该事件在新标签显示后（旧标签已经隐藏），分别使用<code>event.target</code> 和 <code>event.relatedTarget</code> 事件指向前一个活动标签和新的活动标签.</td>
        </tr>
       </tbody>
     </table>
