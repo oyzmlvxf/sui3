@@ -1,9 +1,9 @@
 <div class="bs-docs-section">
-  <h1 id="alerts" class="page-header">Alert messages <small>alert.js</small></h1>
+  <h1 id="alerts" class="page-header">警告<small>alert.js</small></h1>
 
-  <h2 id="alerts-examples">Example alerts</h2>
-  <p>Add dismiss functionality to all alert messages with this plugin.</p>
-  <p>When using a <code>.close</code> button, it must be the first child of the <code>.alert-dismissible</code> and no text content may come before it in the markup.</p>
+  <h2 id="alerts-examples">示例</h2>
+  <p>使用该组件可以添加所有警告或者反馈信息</p>
+  <p>在使用<code>.close</code> 按钮时,它必须是<code>.alert-dismissible</code>的第一个子节点，并且在它前面的标记中没有文本内容。</p>
   <div class="bs-example bs-example-standalone" data-example-id="dismissible-alert-js">
     <div class="alert alert-warning alert-dismissible fade in" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -22,9 +22,9 @@
   </div><!-- /example -->
 
 
-  <h2 id="alerts-usage">Usage</h2>
+  <h2 id="alerts-usage">用法</h2>
 
-  <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality. Closing an alert removes it from the DOM.</p>
+  <p>只需增加<code>data-dismiss="alert"</code>到你的关闭按钮，就回自动拥有一个警告关闭功能，关闭警告框会将其从DOM中移除.</p>
 
 {% highlight html %}
 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -32,19 +32,19 @@
 </button>
 {% endhighlight %}
 
-  <p>To have your alerts use animation when closing, make sure they have the <code>.fade</code> and <code>.in</code> classes already applied to them.</p>
+  <p>想要让你的警告框在关闭时拥有渐隐，需要在元素上增加 <code>.fade</code>和<code>.in</code>样式类</p>
 
-  <h3 id="alerts-methods">Methods</h3>
+  <h3 id="alerts-methods">方法</h3>
 
   <h4>$().alert()</h4>
-  <p>Makes an alert listen for click events on descendant elements which have the <code>data-dismiss="alert"</code> attribute. (Not necessary when using the data-api's auto-initialization.)</p>
+  <p>使警告能够监听拥有<code>data-dismiss="alert"</code>属性的后代元素的单击事件. (在使用data-这类自动初始化没有必要使用.)</p>
 
   <h4>$().alert('close')</h4>
-  <p>Closes an alert by removing it from the DOM. If the <code>.fade</code> and <code>.in</code> classes are present on the element, the alert will fade out before it is removed.</p>
+  <p>通过将警告移出DOM关闭警告框. 如果 <code>.fade</code> 和 <code>.in</code> 已在节点上应该，那么早移除前，警告框会有渐隐的效果.</p>
 
 
-  <h3 id="alerts-events">Events</h3>
-  <p>Bootstrap's alert plugin exposes a few events for hooking into alert functionality.</p>
+  <h3 id="alerts-events">事件</h3>
+  <p>警告框暴漏了一些事件来实现其警告功能.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
@@ -56,11 +56,11 @@
       <tbody>
         <tr>
           <td>close</td>
-          <td>This event fires immediately when the <code>close</code> instance method is called.</td>
+          <td>该事件会在<code>close</code>实例方法调用后执行.</td>
         </tr>
         <tr>
           <td>closed</td>
-          <td>This event is fired when the alert has been closed (will wait for CSS transitions to complete).</td>
+          <td>该事件会在警告框被关闭后调用。（会等待CSS动画结束）</td>
         </tr>
       </tbody>
     </table>
