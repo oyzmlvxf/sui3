@@ -2517,7 +2517,7 @@ itemText: function(item) {
 
 
   <h3 id="alerts-events">事件</h3>
-  <p>警告框暴漏了一些事件来实现其警告功能.</p>
+  <p>警告框暴漏了一些与警告功能相关的事件可供使用.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
@@ -2771,23 +2771,23 @@ itemText: function(item) {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="collapse" class="page-header">Collapse <small>collapse.js</small></h1>
+  <h1 id="collapse" class="page-header">折叠 <small>collapse.js</small></h1>
 
-  <p class="lead">Flexible plugin that utilizes a handful of classes for easy toggle behavior.</p>
+  <p class="lead">该组件利用较少的样式类实现了折叠功能</p>
 
   <div class="bs-callout bs-callout-danger" id="callout-collapse-dependency">
-    <h4>Plugin dependency</h4>
-    <p>Collapse requires the <a href="#transitions">transitions plugin</a> to be included in your version of Bootstrap.</p>
+    <h4>组件依赖</h4>
+    <p>折叠组件依赖于<a href="#transitions">过渡组件</a></p>
   </div>
 
   <h2 id="collapse-example">Example</h2>
-  <p>Click the buttons below to show and hide another element via class changes:</p>
+  <p>点击下列按钮来改变样式类，实现隐藏和显示另外的元素:</p>
   <ul>
-    <li><code>.collapse</code> hides content</li>
-    <li><code>.collapsing</code> is applied during transitions</li>
-    <li><code>.collapse.in</code> shows content</li>
+    <li><code>.collapse</code>隐藏内容</li>
+    <li><code>.collapsing</code>应用在工作过程中</li>
+    <li><code>.collapse.in</code>显示内容</li>
   </ul>
-  <p>You can use a link with the <code>href</code> attribute, or a button with the <code>data-target</code> attribute. In both cases, the <code>data-toggle="collapse"</code> is required.</p>
+  <p>你可以使用一个有 <code>href</code> 属性,或者具有 <code>data-target</code>属性的button按钮.这两种情况下，都需要<code>data-toggle="collapse"</code></p>
 
   <div class="bs-example">
     <p>
@@ -2816,8 +2816,8 @@ itemText: function(item) {
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h2 id="collapse-example-accordion">Accordion example</h2>
-  <p>Extend the default collapse behavior to create an accordion with the panel component.</p>
+  <h2 id="collapse-example-accordion">折叠面板示例</h2>
+  <p>拓展默认折叠行为实现的一个折叠面板</p>
 
   <div class="bs-example" data-example-id="collapse-accordion">
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -2910,7 +2910,7 @@ itemText: function(item) {
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <p>It's also possible to swap out <code>.panel-body</code>s with <code>.list-group</code>s.</p>
+  <p>也可以使用<code>.panel-body</code>更换<code>.list-group</code>.</p>
 
   <div class="panel-group" role="tablist">
     <div class="panel panel-default">
@@ -2933,30 +2933,30 @@ itemText: function(item) {
   </div>
 
   <div class="bs-callout bs-callout-warning" id="callout-collapse-accessibility">
-    <h4>Make expand/collapse controls accessible</h4>
-    <p>Be sure to add <code>aria-expanded</code> to the control element. This attribute explicitly defines the current state of the collapsible element to screen readers and similar assistive technologies. If the collapsible element is closed by default, it should have a value of <code>aria-expanded="false"</code>. If you've set the collapsible element to be open by default using the <code>in</code> class, set <code>aria-expanded="true"</code> on the control instead. The plugin will automatically toggle this attribute based on whether or not the collapsible element has been opened or closed.</p>
-    <p>Additionally, if your control element is targetting a single collapsible element – i.e. the <code>data-target</code> attribute is pointing to an <code>id</code> selector – you may add an additional <code>aria-controls</code> attribute to the control element, containing the <code>id</code> of the collapsible element. Modern screen readers and similar assistive technologies make use of this attribute to provide users with additional shortcuts to navigate directly to the collapsible element itself.</p>
+    <h4>使展开/折叠可控</h4>
+    <p>确保添加了<code>aria-expanded</code>到控制元素。此属性明确定义了可折叠元素在屏幕阅读器和类似的辅助技术的当前状态。如果折叠元素默认关闭，该属性的值应该是<code>aria-expanded="false"</code>.默认打开的话需要设置 <code>in</code> class, 设置 <code>aria-expanded="true"</code> 在需要控制的地方. 组件会根据折叠元素的状态自动切换属性值。</p>
+    <p>此外, 如果你的控制元素指向了一个单一可折叠元素 – 比如说 <code>data-target</code> 属性指向了一个 <code>id</code> 选择器– 你需要增加一个额外的<code>aria-controls</code> 属性到控制节点，包括可折叠元素的<code>id</code>. 现代屏幕阅读器和类似的辅助设备利用这个属性为用户提供更多便捷，并可直接导航到可折叠文本。</p>
   </div>
 
-  <h2 id="collapse-usage">Usage</h2>
+  <h2 id="collapse-usage">用法</h2>
   <p>The collapse plugin utilizes a few classes to handle the heavy lifting:</p>
   <ul>
-    <li><code>.collapse</code> hides the content</li>
-    <li><code>.collapse.in</code> shows the content</li>
-    <li><code>.collapsing</code> is added when the transition starts, and removed when it finishes</li>
+    <li><code>.collapse</code>隐藏内容</li>
+    <li><code>.collapse.in</code>显示内容</li>
+    <li><code>.collapsing</code>在动作开始时添加，动作结束后移除</li>
   </ul>
-  <p>These classes can be found in <code>component-animations.less</code>.</p>
+  <p>这些样式可以在<code>component-animations.less</code>中找到.</p>
 
-  <h3>Via data attributes</h3>
-  <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to the element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a CSS selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
-  <p>To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.</p>
+  <h3>通过data属性</h3>
+  <p>只需增加<code>data-toggle="collapse"</code>和<code>data-target</code>到指定元素会自动指定一个可以折叠元素。<code>data-target</code> 属性接收一个CSS选择器应用到需要折叠的位置。需要增加样式类<code>collapse</code>到可折叠的元素上.如果需要默认打开，增加一个额外的样式类<code>in</code>就ok了.</p>
+  <p>增加折叠面板实现折叠控制，需要增加data属性<code>data-parent="#selector"</code>.具体的操作可以参考demo.</p>
 
-  <h3>Via JavaScript</h3>
-  <p>Enable manually with:</p>
+  <h3>通过js</h3>
+  <p>手动开启：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'.collapse'</span><span class="p">).</span><span class="nx">collapse</span><span class="p">()</span></code></pre></div>
 
-  <h3 id="collapse-options">Options</h3>
-  <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-parent=""</code>.</p>
+  <h3 id="collapse-options">参数</h3>
+  <p>可以通过data属性或者js两种方式传递参数。对于data属性来说，传递参数名到<code>data-</code>,例如<code>data-parent=""</code>.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -2984,25 +2984,25 @@ itemText: function(item) {
     </table>
   </div><!-- /.table-responsive -->
 
-  <h3 id="collapse-methods">Methods</h3>
+  <h3 id="collapse-methods">方法</h3>
 
   <h4>.collapse(options)</h4>
-  <p>Activates your content as a collapsible element. Accepts an optional options <code>object</code>.
+  <p>激活可折叠元素，接受可选的参数<code>object</code>.
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myCollapsible'</span><span class="p">).</span><span class="nx">collapse</span><span class="p">({</span>
   <span class="na">toggle</span><span class="p">:</span> <span class="kc">false</span>
 <span class="p">})</span></code></pre></div>
 
   <h4>.collapse('toggle')</h4>
-  <p>Toggles a collapsible element to shown or hidden.</p>
+  <p>切换可折叠元素的显示或者隐藏效果</p>
 
   <h4>.collapse('show')</h4>
-  <p>Shows a collapsible element.</p>
+  <p>显示可折叠元素</p>
 
   <h4>.collapse('hide')</h4>
-  <p>Hides a collapsible element.</p>
+  <p>隐藏可折叠元素</p>
 
-  <h3 id="collapse-events">Events</h3>
-  <p>Bootstrap's collapse class exposes a few events for hooking into collapse functionality.</p>
+  <h3 id="collapse-events">事件</h3>
+  <p>折叠类暴露了一些与折叠功能挂钩的事件</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
@@ -3014,21 +3014,21 @@ itemText: function(item) {
       <tbody>
        <tr>
          <td>show</td>
-         <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+         <td>该事件会在<code>show</code>实例方法调用后触发</td>
        </tr>
        <tr>
          <td>shown</td>
-         <td>This event is fired when a collapse element has been made visible to the user (will wait for CSS transitions to complete).</td>
+         <td>该事件会在折叠元素对用户可见后触发（会等到CSS动画结束）</td>
        </tr>
        <tr>
          <td>hide</td>
          <td>
-          This event is fired immediately when the <code>hide</code> method has been called.
+          该事件会在调用<code>hide</code>方法后被触发。
          </td>
        </tr>
        <tr>
          <td>hidden</td>
-         <td>This event is fired when a collapse element has been hidden from the user (will wait for CSS transitions to complete).</td>
+         <td>该事件会在可折叠元素对用户不可见后触发（会等到CSS动画结束）</td>
        </tr>
       </tbody>
     </table>
