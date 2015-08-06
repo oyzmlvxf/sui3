@@ -1,86 +1,86 @@
 <div class="bs-docs-section">
   <h1 id="js-overview" class="page-header">概述</h1>
 
-  <h3 id="js-individual-compiled">单个还是全部引入</h3>
-  <p>组建可以使用bootstrap的独立*.js单个引入，也可以使用bootstrap.js或者压缩版本的bootstrap.min.js全部引入 <code>*.js</code> files), or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>).</p>
+ <!--  <h3 id="js-individual-compiled">单个还是全部引入</h3>
+  <p>组建可以使用bootstrap的独立*.js单个引入，也可以使用bootstrap.js或者压缩版本的bootstrap.min.js全部引入 <code>*.js</code> files), or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>).</p> -->
 
   <div class="bs-callout bs-callout-danger" id="callout-overview-not-both">
-    <h4>Using the compiled JavaScript</h4>
-    <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file. Include only one.</p>
+    <h4>建议使用压缩版的js文件或者直接使用我们的CDN</h4>
+    <p><code>sui3.js</code> and <code>sui3.min.js</code>都包含了所有插件，在使用时只需引入一个</p>
   </div>
 
-  <div class="bs-callout bs-callout-danger" id="callout-overview-dependencies">
-    <h4>Plugin dependencies</h4>
-    <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included <strong>before</strong> the plugin files). <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
-  </div>
+ <!--  <div class="bs-callout bs-callout-danger" id="callout-overview-dependencies"> -->
+   <!--  <h4>插件依赖</h4> -->
+   <!--  <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included <strong>before</strong> the plugin files). <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p> -->
+<!--   </div> -->
 
-  <h3 id="js-data-attrs">Data attributes</h3>
-  <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first-class API and should be your first consideration when using a plugin.</p>
+  <h3 id="js-data-attrs">data属性</h3>
+  <p>你可以仅仅通过 data 属性 API 就能使用所有的插件，无需写一行 JavaScript 代码。这应该是你的首选方式。</p>
 
-  <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:</p>
+  <p>话又说回来，在某些情况下可能需要将此功能关闭。因此，我们还提供了关闭 data 属性 API 的方法，即解除以<code>data-api</code> 为命名空间并绑定在文档上的事件。就像下面这样：</p>
 {% highlight js %}
 $(document).off('.data-api')
 {% endhighlight %}
 
-  <p>Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:</p>
+  <p>另外，如果是针对某个特定的插件，只需在 data-api 前面添加那个插件的名称作为命名空间，如下：</p>
 {% highlight js %}
 $(document).off('.alert.data-api')
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-danger" id="callout-overview-single-data">
-    <h4>Only one plugin per element via data attributes</h4>
-    <p>Don't use data attributes from multiple plugins on the same element. For example, a button cannot both have a tooltip and toggle a modal. To accomplish this, use a wrapping element.</p>
+    <h4>每个元素通过data属性实例一个组件</h4>
+    <p>不要再一个元素上通过data属性实例多个组件。例如，一个按钮不能作为提示框的同时又做弹出层。如果你的确需要做，增加一个包裹元素可以实现。</p>
   </div>
 
-  <h3 id="js-programmatic-api">Programmatic API</h3>
-  <p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
+  <h3 id="js-programmatic-api">编程方式的 API</h3>
+  <p>我们为所有 Bootstrap 插件提供了纯 JavaScript 方式的 API。所有公开的 API 都是支持单独或链式调用方式，并且返回其所操作的元素集合（注：和jQuery的调用形式一致）。</p>
 {% highlight js %}
 $('.btn.danger').button('toggle').addClass('fat')
 {% endhighlight %}
 
-  <p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
+  <p>所有方法都可以接受一个可选的 option 对象作为参数，或者一个代表特定方法的字符串，或者什么也不提供（在这种情况下，插件将会以默认值初始化）</p>
 {% highlight js %}
 $('#myModal').modal()                      // initialized with defaults
 $('#myModal').modal({ keyboard: false })   // initialized with no keyboard
 $('#myModal').modal('show')                // initializes and invokes show immediately
 {% endhighlight %}
 
-  <p>Each plugin also exposes its raw constructor on a <code>Constructor</code> property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel="popover"]').data('popover')</code>.</p>
+  <p>每个插件还通过<code>Constructor</code属性暴露了其原始的构造函数：<code>$.fn.popover.Constructor</code>.如果你想获取某个插件的实例，可以直接通过页面元素获取： <code>$('[rel="popover"]').data('popover')</code>.</p>
 
-  <h4>Default settings</h4>
-  <p>You can change the default settings for a plugin by modifying the plugin's <code>Constructor.DEFAULTS</code> object:<p>
+  <h4>默认设置</h4>
+  <p>每个插件都可以通过修改其自身的<code>Constructor.DEFAULTS</code> 对象从而改变插件的默认设置<p>
 {% highlight js %}
 $.fn.modal.Constructor.DEFAULTS.keyboard = false // changes default for the modal plugin's `keyboard` option to false
 {% endhighlight %}
 
-  <h3 id="js-noconflict">No conflict</h3>
-  <p>Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances, namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.</p>
+  <h3 id="js-noconflict">避免命名空间冲突</h3>
+  <p>某些时候可能需要将插件与其他 UI 框架共同使用。在这种情况下，命名空间冲突随时可能发生。如果不幸发生了这种情况，你可以通过调用插件的 <code>.noConflict</code>方法恢复其原始值.</p>
 {% highlight js %}
 var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
 $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the Bootstrap functionality
 {% endhighlight %}
 
-  <h3 id="js-events">Events</h3>
-  <p>Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is triggered on the completion of an action.</p>
-  <p>As of 3.0.0, all Bootstrap events are namespaced.</p>
-  <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
+  <h3 id="js-events">事件</h3>
+  <p>我们为大部分插件所具有的动作提供了自定义事件。一般来说，这些事件都有不定式和过去式两种动词的命名形式，例如，不定式形式的动词（例如<code>show</code>)表示其在事件开始时被触发；而过去式动词（例如<code>shown</code>）表示在动作执行完毕之后被触发。</p>
+  <p>从sui3开始，所有插件的事件的名称都采用命名空间方式。</p>
+  <p>所有以不定式形式的动词命名的事件都提供了 <code>preventDefault</code> 功能。这就赋予你在动作开始执行前将其停止的能力。</p>
 {% highlight js %}
 $('#myModal').on('show.bs.modal', function (e) {
   if (!data) return e.preventDefault() // stops modal from being shown
 })
 {% endhighlight %}
 
-  <h3 id="js-version-nums">Version numbers</h3>
-  <p>The version of each of Bootstrap's jQuery plugins can be accessed via the <code>VERSION</code> property of the plugin's constructor. For example, for the tooltip plugin:</p>
+  <h3 id="js-version-nums">版本号</h3>
+  <p>sui3依赖的jquery版本可以通过构造函数的<code>VERSION</code>属性访问. 例如，工具提示组件：</p>
 {% highlight js %}
 $.fn.tooltip.Constructor.VERSION // => "{{ site.current_version }}"
 {% endhighlight %}
 
-  <h3 id="js-disabled">No special fallbacks when JavaScript is disabled</h3>
-  <p>Bootstrap's plugins don't fall back particularly gracefully when JavaScript is disabled. If you care about the user experience in this case, use <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript"><code>&lt;noscript&gt;</code></a> to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.</p>
+  <h3 id="js-disabled">未对禁用 JavaScript 的浏览器提供补救措施</h3>
+  <p>本插件未对禁用 JavaScript 的浏览器提供补救措施。如果你对这种情况下的用户体验很关心的话，请添加<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript"><code>&lt;noscript&gt;</code></a> 标签向你的用户进行解释（并告诉他们如何启用 JavaScript），或者按照你自己的方式提供补救措施。</p>
 
   <div class="bs-callout bs-callout-warning" id="callout-third-party-libs">
-    <h4>Third-party libraries</h4>
-    <p><strong>Bootstrap does not officially support third-party JavaScript libraries</strong> like Prototype or jQuery UI. Despite <code>.noConflict</code> and namespaced events, there may be compatibility problems that you need to fix on your own.</p>
+    <h4>第三方工具库</h4>
+    <p><strong>sui3 官方不提供对第三方 JavaScript 工具库的支持</strong> 例如 Prototype 或 jQuery UI。除了 <code>.noConflict</code> 和为事件名称添加命名空间，还可能会有兼容性方面的问题，这就需要你自己来处理了。</p>
   </div>
 </div>
