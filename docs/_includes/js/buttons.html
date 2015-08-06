@@ -1,18 +1,18 @@
 <div class="bs-docs-section">
-  <h1 id="buttons" class="page-header">Buttons <small>button.js</small></h1>
+  <h1 id="buttons" class="page-header">按钮 <small>button.js</small></h1>
 
-  <p class="lead">Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
+  <p class="lead">该插件允许你加强按钮的功能。你可以控制按钮的状态，也可以为组件创建按钮组，比如工具条。</p>
 
   <div class="bs-callout bs-callout-danger" id="callout-buttons-ff-autocomplete">
-    <h4>Cross-browser compatibility</h4>
-    <p><a href="https://github.com/twbs/bootstrap/issues/793">Firefox persists form control states (disabledness and checkedness) across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>. See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=654072">Mozilla bug #654072</a>.</p>
+    <h4>跨浏览器兼容性</h4>
+    <p><a href="https://github.com/twbs/bootstrap/issues/793">在页面多次加载之间 Firefox 依旧保持表单控制状态(不可用和不可选)</a>. 一种解决方式是设置<code>autocomplete="off"</code>. 参见 <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=654072">Mozilla bug #654072</a>.</p>
   </div>
 
-  <h2 id="buttons-stateful">Stateful</h2>
-  <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
+  <h2 id="buttons-stateful">状态</h2>
+  <p>通过添加 <code>data-loading-text="Loading..."</code>可以为按钮设置正在加载的状态.</p>
   <div class="bs-callout bs-callout-info" id="callout-buttons-state-names">
-    <h4>Use whichever state you like!</h4>
-    <p>For the sake of this demonstration, we are using <code>data-loading-text</code> and <code>$().button('loading')</code>, but that's not the only state you can use. <a href="#buttons-methods">See more on this below in the <code>$().button(string)</code> documentation</a>.</p>
+    <h4>使用任何你想用的状态</h4>
+    <p>在此次演示中,我们使用了 <code>data-loading-text</code> 和 <code>$().button('loading')</code>, 但是这不仅仅是你可以使用的状态. <a href="#buttons-methods">参见更多<code>$().button(string)</code> 文档</a>.</p>
   </div>
   <div class="bs-example">
     <button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
@@ -33,11 +33,11 @@
 </script>
 {% endhighlight %}
 
-  <h2 id="buttons-single-toggle">Single toggle</h2>
-  <p>Add <code>data-toggle="button"</code> to activate toggling on a single button.</p>
+  <h2 id="buttons-single-toggle">单例切换</h2>
+  <p>增加 <code>data-toggle="button"</code>能够激活单个按钮的切换.</p>
   <div class="bs-callout bs-callout-warning" id="callout-buttons-single-pretoggled">
-    <h4>Pre-toggled buttons need <code>.active</code> and <code>aria-pressed="true"</code></h4>
-    <p>For pre-toggled buttons, you must add the <code>.active</code> class and the <code>aria-pressed="true"</code> attribute to the <code>button</code> yourself.</p>
+    <h4>预切换按钮需要 <code>.active</code> 和 <code>aria-pressed="true"</code></h4>
+    <p>对预切换按钮,你必须增加<code>.active</code>样式和<code>aria-pressed="true"</code> 属性到 <code>button</code> 自身.</p>
   </div>
   <div class="bs-example">
     <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
@@ -50,15 +50,15 @@
 </button>
 {% endhighlight %}
 
-  <h2 id="buttons-checkbox-radio">Checkbox / Radio</h2>
-  <p>Add <code>data-toggle="buttons"</code> to a <code>.btn-group</code> containing checkbox or radio inputs to enable toggling in their respective styles.</p>
+  <h2 id="buttons-checkbox-radio">复选 / 单选</h2>
+  <p>增加 <code>data-toggle="buttons"</code>到 <code>.btn-group</code>包含复选或者单选的输入框容器可以启用各自组件的样式.</p>
   <div class="bs-callout bs-callout-warning" id="callout-buttons-multi-preselected">
-    <h4>Preselected options need <code>.active</code></h4>
-    <p>For preselected options, you must add the <code>.active</code> class to the input's <code>label</code> yourself.</p>
+    <h4>预选择一个选项需要增加<code>.active</code></h4>
+    <p>想要预选一个内容, 你必须自行增加 <code>.active</code> 样式到一个输入框<code>label</code></p>
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-buttons-only-click">
-    <h4>Visual checked state only updated on click</h4>
-    <p>If the checked state of a checkbox button is updated without firing a <code>click</code> event on the button (e.g. via <code>&lt;input type="reset"&gt;</code> or via setting the <code>checked</code> property of the input), you will need to toggle the <code>.active</code> class on the input's <code>label</code> yourself.</p>
+    <h4>视觉上的选中状态仅能通过click事件更新</h4>
+    <p>如果复选框的选中状态没有通过<code>click</code>事件(e.g. via <code>&lt;input type="reset"&gt;</code>或者通过设置输入框的<code>checked</code> 属性, 你将需要自行切换<code>.active</code>输入框上的样式<code>label</code></p>
   </div>
   <div class="bs-example" data-example-id="buttons-checkbox">
     <div class="btn-group" data-toggle="buttons">
@@ -114,16 +114,16 @@
 </div>
 {% endhighlight %}
 
-  <h2 id="buttons-methods">Methods</h2>
+  <h2 id="buttons-methods">方法</h2>
 
   <h4>$().button('toggle')</h4>
-  <p>Toggles push state. Gives the button the appearance that it has been activated.</p>
+  <p>切换按压状态。赋予按钮被激活的外观。</p>
 
   <h4>$().button('reset')</h4>
-  <p>Resets button state - swaps text to original text.</p>
+  <p>重置按钮状态，文本内容恢复为最初的内容。</p>
 
   <h4>$().button(string)</h4>
-  <p>Swaps text to any data defined text state.</p>
+  <p>重置按钮状态，并添加新的内容。</p>
 {% highlight html %}
 <button type="button" id="myStateButton" data-complete-text="finished!" class="btn btn-primary" autocomplete="off">
   ...
