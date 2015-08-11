@@ -32,11 +32,23 @@
                 <li{% if page.slug == "toolkit" %} class="active"{% endif %} >
                     <a href="http://g.alicdn.daily.taobao.net/sui/sui-toolkit/0.0.1/">页面搭建工具箱</a>
                 </li>
+                 <li{% if page.slug == "toolkit" %} class="active"{% endif %} >
+                    <a href="http://m.sui.taobao.org/components/" target="_blank">SUI Mobile</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="http://sui.taobao.org/sui/docs" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">访问旧版</a></li>
-                <!-- <li><a href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li> -->
+                <li>
+                    <a class="dropdown-toggle" id="changeColor" data-toggle="dropdown" aria-expanded="true" data-current="default">换肤</a>
+                     <ul id="colorGroup" class="dropdown-menu" role="menu" aria-labelledby="changeColor">
+                        <li role="presentation"><a  class="changColor-default" role="menuitem" tabindex="-1" href="#" value="default">default</a></li>
+                        <li role="presentation"><a  class="changColor-green" role="menuitem" tabindex="-1" href="#" value="green">green</a></li>
+                        <li role="presentation"><a  class="changColor-pink" role="menuitem" tabindex="-1" href="#" value="pink">pink</a></li>
+                        <li role="presentation"><a  class="changColor-dark-green" role="menuitem" tabindex="-1" href="#" value="dark-green">dark-green</a></li>
+                    </ul>
+                </li>
             </ul>
+
         </nav>
     </div>
 </header>

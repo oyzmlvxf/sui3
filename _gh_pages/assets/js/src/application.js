@@ -206,8 +206,40 @@
       event.preventDefault();
       $.toast('button bottomright warning','warning','bottom right');
     });
-
-
-  })
-
+  });
+    $("#colorGroup li").click(function() {
+        var old = $('#changeColor').data('old');
+        var current = $(this).children('a').attr('value');
+        localStorage.setItem("currentSkin",current);
+        $('#changeColor').data('old',current);
+        var color = "#28a3ef";
+        if(current === "green"){
+          color = "#4a8e57";
+        }else if(current === "pink"){
+          color = "#b654a7";
+        }else if(current === "dark-green"){
+          color = "#518594";
+        }
+        $("#changeColor").css("color",color);
+        if(current !== old){
+          if(current !== 'default'){
+            $('#skin').attr('href','../dist/css/sui-'+current+'.css');
+            $('#bs-theme-stylesheet').attr('href','../dist/css/sui-theme-'+current+'.css');
+          }
+          else{
+            $('#skin').attr('href','../dist/css/sui.css');
+            $('#bs-theme-stylesheet').attr('href','../dist/css/sui-theme.css');
+          }
+        }
+    });
+    var current =  localStorage.getItem("currentSkin");
+    var color = "#28a3ef";
+    if(current === "green"){
+      color = "#4a8e57";
+    }else if(current === "pink"){
+      color = "#b654a7";
+    }else if(current === "dark-green"){
+      color = "#518594";
+    }
+    $("#changeColor").css("color",color);
 }(jQuery)

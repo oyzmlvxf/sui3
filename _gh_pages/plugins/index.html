@@ -17,8 +17,8 @@
 
 <!-- Bootstrap core CSS -->
 
-<link href="../dist/css/sui.css" rel="stylesheet">
-
+<link href="../dist/css/sui.css" rel="stylesheet" id="skin">
+<link href="../dist/css/sui-theme.css" rel="stylesheet" id="bs-theme-stylesheet">
 
 
 <!-- Documentation extras -->
@@ -28,13 +28,21 @@
 
 <!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="../assets/js/ie-emulation-modes-warning.js"></script>
-
+<script src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="../dist/js/lib/html5shiv.min.js"></script>
   <script src="../dist/js/lib/respond.min.js"></script>
 <![endif]-->
-
+<script type="text/javascript">
+	var currSkin = localStorage.getItem("currentSkin");
+	if(currSkin && currSkin !== "default"){
+		var skinUrl = "../dist/css/sui-"+currSkin+".css";
+		var themeUrl = "../dist/css/sui-theme-"+currSkin+".css";
+		$("#skin").attr('href',skinUrl);
+		$("#bs-theme-stylesheet").attr('href',themeUrl);
+	}
+</script>
 <!-- Favicons -->
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="icon" href="http://gtms04.alicdn.com/tps/i4/TB17MaDGpXXXXb7apXXAz6UFXXX-16-16.png">
@@ -79,11 +87,23 @@
                 <li >
                     <a href="http://g.alicdn.daily.taobao.net/sui/sui-toolkit/0.0.1/">页面搭建工具箱</a>
                 </li>
+                 <li >
+                    <a href="http://m.sui.taobao.org/components/" target="_blank">SUI Mobile</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="http://sui.taobao.org/sui/docs" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">访问旧版</a></li>
-                <!-- <li><a href="http://sui.taobao.org" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li> -->
+                <li>
+                    <a class="dropdown-toggle" id="changeColor" data-toggle="dropdown" aria-expanded="true" data-current="default">换肤</a>
+                     <ul id="colorGroup" class="dropdown-menu" role="menu" aria-labelledby="changeColor">
+                        <li role="presentation"><a  class="changColor-default" role="menuitem" tabindex="-1" href="#" value="default">default</a></li>
+                        <li role="presentation"><a  class="changColor-green" role="menuitem" tabindex="-1" href="#" value="green">green</a></li>
+                        <li role="presentation"><a  class="changColor-pink" role="menuitem" tabindex="-1" href="#" value="pink">pink</a></li>
+                        <li role="presentation"><a  class="changColor-dark-green" role="menuitem" tabindex="-1" href="#" value="dark-green">dark-green</a></li>
+                    </ul>
+                </li>
             </ul>
+
         </nav>
     </div>
 </header>
@@ -277,7 +297,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+
 
 
   <script src="../dist/js/sui.js"></script>

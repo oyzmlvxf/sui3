@@ -17,15 +17,8 @@
 {% if site.github %}
 <link href="../dist/css/sui.min.css" rel="stylesheet">
 {% else %}
-<link href="../dist/css/sui.css" rel="stylesheet">
-{% endif %}
-{% if page.slug == "css" or page.slug == "components" or page.slug == "js" %}
-  <!-- Optional Bootstrap Theme -->
-{% if site.github %}
-  <link href="data:text/css;charset=utf-8," data-href="../dist/css/sui-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
-{% else %}
-  <link href="data:text/css;charset=utf-8," data-href="../dist/css/sui-theme.css" rel="stylesheet" id="bs-theme-stylesheet">
-{% endif %}
+<link href="../dist/css/sui.css" rel="stylesheet" id="skin">
+<link href="../dist/css/sui-theme.css" rel="stylesheet" id="bs-theme-stylesheet">
 {% endif %}
 
 <!-- Documentation extras -->
@@ -37,13 +30,21 @@
 {% endif %}
 <!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="../assets/js/ie-emulation-modes-warning.js"></script>
-
+<script src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="../dist/js/lib/html5shiv.min.js"></script>
   <script src="../dist/js/lib/respond.min.js"></script>
 <![endif]-->
-
+<script type="text/javascript">
+	var currSkin = localStorage.getItem("currentSkin");
+	if(currSkin && currSkin !== "default"){
+		var skinUrl = "../dist/css/sui-"+currSkin+".css";
+		var themeUrl = "../dist/css/sui-theme-"+currSkin+".css";
+		$("#skin").attr('href',skinUrl);
+		$("#bs-theme-stylesheet").attr('href',themeUrl);
+	}
+</script>
 <!-- Favicons -->
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="icon" href="http://gtms04.alicdn.com/tps/i4/TB17MaDGpXXXXb7apXXAz6UFXXX-16-16.png">

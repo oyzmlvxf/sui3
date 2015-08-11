@@ -1974,3 +1974,15 @@ body {
   max-height: 3000px;
   /*最大值 ,因为会影响动画，所以不能设置太大，如果有超过这个值，自己在 style 中重置一下*/
 }
+.changColor-default:active {
+  background: #28a3ef !important;
+}
+.changColor-green:hover {
+  background: #4a8e57 !important;
+}
+.changColor-pink:hover {
+  background: #b654a7 !important;
+}
+.changColor-dark-green:hover {
+  background: #518594 !important;
+}
