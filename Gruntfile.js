@@ -195,41 +195,41 @@ module.exports = function (grunt) {
       },
       themePink:{
         options:{
-          paths:["less/"],
+          paths:['less/'],
           modifyVars:{
             'brand-primary':'#b654a7',
             'brand-primary-hover':'#b654a7'
           }
         },
         files:{
-          "dist/css/sui-pink.css":"less/sui.less",
-          "dist/css/sui-theme-pink.css":"less/theme.less"
+          'dist/css/sui-pink.css':'less/sui.less',
+          'dist/css/sui-theme-pink.css':'less/theme.less'
         }
       },
       themeGreen:{
         options:{
-          paths:["less/"],
+          paths:['less/'],
           modifyVars:{
             'brand-primary':'#4a8e57',
             'brand-primary-hover':'#4a8e57'
           }
         },
         files:{
-          "dist/css/sui-green.css":"less/sui.less",
-          "dist/css/sui-theme-green.css":"less/theme.less"
+          'dist/css/sui-green.css':'less/sui.less',
+          'dist/css/sui-theme-green.css':'less/theme.less'
         }
       },
       themeDarkGreen:{
         options:{
-          paths:["less/"],
+          paths:['less/'],
           modifyVars:{
             'brand-primary':'#518594',
             'brand-primary-hover':'#518594'
           }
         },
         files:{
-          "dist/css/sui-dark-green.css":"less/sui.less",
-          "dist/css/sui-theme-dark-green.css":"less/theme.less"
+          'dist/css/sui-dark-green.css':'less/sui.less',
+          'dist/css/sui-theme-dark-green.css':'less/theme.less'
         }
       }
     },
@@ -491,7 +491,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify:core', 'uglify:corePrefixed', 'copy:lib']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme','less:themePink','less:themeGreen','less:themeDarkGreen','prefix:css']);
+  grunt.registerTask('less-compile', ['less:compileCore', 'less:themePink','less:themeGreen','less:themeDarkGreen','prefix:css']);
   grunt.registerTask('dist-css', ['less-compile', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme', 'cssmin:minifyCorePrefixed', 'cssmin:minifyThemePrefixed']);
 
   // Full distribution task.
