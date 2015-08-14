@@ -1,0 +1,342 @@
+<div class="bs-docs-section">
+    <h1 class="page-header">sui图表组件  <small>sui-chart alpha版</small></h1
+	 <p class="lead">sui-chart是基于highcharts开发的一款chart组件，它模仿bootstrap插件，为用户提供了快捷方便的调用方式，同时也简化了highcharts的配置内容。目前，对柱状图，饼状图，折线图都有较为统一友好的显示效果。  </p>
+	 <h2>Get start</h2>
+	  <p>正式开始前你需要引入资源文件，因为sui-chart基于jquery开发，所以在引入sui-chart-all.js文件前，需要引用jquery.js.建议使用压缩版的脚本文件。建议把sui-chart.js放到页面底部，这样可以使用自动初始化方法。</p>
+	  {% highlight html %}
+<script src="http://g.alicdn.com/sui/sui-chart/0.1.0/sui-chart.min.js"></script>
+	  {% endhighlight %}
+
+	  <h2 id="init">1)初始化</h2>
+	  <p>sui-chart提供了两种初始化方法。你可以通过使用html标签中的<code>data-chart</code>指定图表类型，使用<code>data-json</code>指定数据或数据源，这种初始化方法会在页面初始化完成后初始化图表，不需要任何javascript代码。
+	  <div class="bs-callout bs-callout-danger">注意：动态插入的节点不能使用本方法初始化图表。</div>
+	   {% highlight html %}
+<div id="lineDemo" style="width:600px;height: 400px;" data-chart="line" data-json="http://mockdata/line.json"></div>
+	   {% endhighlight %}
+	   <p>如果上述某个html属性不巧被其他插件占用掉，你也可以使用我们提供的js初始化方法。这种初始化手段较为灵活，并且可以初始化新插入的动态节点。根据图表类型的区别，我们提供了以下5个初始化函数。</p>
+	   <h3>折线图</h3>
+	   <p>
+		<code>$.line(string||object)</code>接受一个参数，参数类型可以是json数据内容或者json数据地址。</p>
+		<p>参数类型</p>
+		{% highlight javascript %}
+$("div").line("./data.json");//相对地址
+$("div").line("www.mockdata.com/data.json");//封装层使用$.getJSON方法，可以获得跨域数据
+
+var jsonObject={...};
+$("div").line(jsonObject);//直接传送json对象
+		{% endhighlight %}
+</p>
+<h3>柱状图<small>  按照显示效果与功能不同，又区分为</small></h3>
+<b>普通柱状图</b><p><code>$.column(string||object)</code>,参数类型同line方法。</p>
+<b>柱状堆叠图</b><p><code>$.stack(string||object)</code>,参数类型同上。</p>
+<h3>饼图</h3><b>普通饼状图</b><p><code>$.pie(string||object)</code>,参数类型同上。</p><b>环形百分比图</b><p><code>$.donut(string||object)</code>,参数类型同上。</p>
+<h2 id="json">2)json格式</h2>
+<p>相比sui-chart的简单和多类型的初始化方法，传入的json数据会令人觉得稍显麻烦。我们在对样式统一的前提下，只提供了必要的数据项，用以简化配置。</p>
+<h3 id="publicJson">2.0)公用数据</h3>
+<p>公用数据不区分图表类型，不同图表都可以使用。</p>
+<p><code>title(string*)</code>：选填，用以指明图表标题，默认为空，建议填写。</p>
+<p><code>colors（Array[string]）</code>选填，用于指定颜色组，官方默认提供了一套较好的颜色搭配组合，不建议填写，只有在图表颜色与你的界面风格有很大冲突时，再做修改.donut图因为仅有两个颜色，使用默认颜色组会确保一定数量的百分比图的颜色不会重复。以下是官方颜色组：</p>
+{% highlight javascript%}
+colors: ['#ff4489', '#ff6f42', '#ffc809', '#99dd13', '#65c008', '#13dac0', '#67b6fc', '#dc4d79', '#bd3b47', '#fd5634', '#fe982a', '#feb800', '#c5d31b', '#4d99de', "#EEEEEE"]
+{% endhighlight %}
+<p><img src="https://img.alicdn.com/tps/TB1X8A7IVXXXXXIXFXXXXXXXXXX-806-223.png"></p>
+<h3 id="lineJSON">2.1）line中的数据格式包括几个部分：</h3>
+<h4><code>series</code></h4>
+<p>必填项，参数内容是一个json数组，用于指定数据组,包括两个属性<p><code>  name</code>：该组数据的名称，值类型<code>string</code></p>
+<p>  <code>  data</code>：属性用于指明数据点的值，是数据点在图表中的Y值.类型为<code>Number</code>数组</p>建议同一图表的不同组数据组间的data数量一致，如某一组数据某点缺失，可以使用<code>null</code>代替。</p>
+<h5><code>xData</code></h5><p><code>type:Array[string || number])</code>
+选填项，代表图表的x轴，默认从0开始增长，每一数据点加1.</p>
+<h5><code>yTitle</code></h5>
+<p><code>type:string</code>选填项，图表Y轴名，默认为空。</p>
+<h5>demo：</h5>
+{% highlight javascript %}
+<div id = "demo1"></div>
+{% endhighlight %}
+{% highlight javascript %}
+var obj = {
+"series":[{
+    "name": "Tokyo",
+    "data": [null,null, 9.5, 14.5]
+}, {
+    "name": "New York",
+    "data": [-0.2, 0.8, 5.7, 11.3]
+}, {
+    "name": "Berlin",
+    "data": [-0.9, 0.6, 3.5, 8.4]
+}, {
+    "name": "London",
+    "data": [3.9, 4.2, 5.7, 8.5]
+}],
+"xData":["Feb", "Mar", "Apr", "May"]
+};
+$("#demo1").line(obj);
+{% endhighlight %}
+<div id = "demo1"></div>
+<script src="http://g.alicdn.com/sui/sui-chart/0.1.0/sui-chart.min.js"></script>
+<script>
+var obj = {
+"series":[{
+    "name": "Tokyo",
+    "data": [null,null, 9.5, 14.5]
+}, {
+    "name": "New York",
+    "data": [-0.2, 0.8, 5.7, 11.3]
+}, {
+    "name": "Berlin",
+    "data": [-0.9, 0.6, 3.5, 8.4]
+}, {
+    "name": "London",
+    "data": [3.9, 4.2, 5.7, 8.5]
+}],
+"xData":["Feb", "Mar", "Apr", "May"],
+"title":"line方法demo"
+};
+$("#demo1").line(obj);
+</script>
+<h3 id="columnJSON">2.2）column中的数据格式包括：</h3>
+<h4><code>series</code></h4>
+<p>必填项，与line中一样，,参数内容是一个json数组，用于指定数据组,包括两个属性</p>
+<p><code>name</code>：该组数据的名称,值类型<code>string</code></p>
+<p><code>data</code>值类型<code>Number</code>数组.属性用于指明数据点的值，是数据点在图表中的Y值。如果一组数据包含多个柱形可以通过在data数组中传入多个数据值，即以下格式数据也是合法的：</p>
+</p>
+<h5>demo：</h5>
+{% highlight json %}
+columnData.json
+{
+    "title": "直营店铺",
+    "series": [{
+        "name": "关联性强",
+        "data": [500,330,200]
+    }]
+}
+{% endhighlight javascript %}
+<div id = "demo2"></div>
+{% highlight html %}
+<div id = "demo2"></div>
+{% endhighlight %}
+{% highlight javascript %}
+$("#demo2").column('columnData.json');
+{% endhighlight %}
+<script>
+	var columnData = {
+    "title": "直营店铺",
+    "series": [{
+        "name": "关联性强",
+        "data": [500,330,200]
+    }]
+	};
+	$("#demo2").column(columnData);
+</script>
+<div class="bs-callout bs-callout-danger"><h5>注意：通常情况下，一个柱形仅有仅有一个数据点，但是依然需要使用数组给data赋值</h5></div>
+<h3 id="stackJSON">2.3)stack中的数据格式包括三个部分：</h3>
+<p>堆叠图的一个柱形中可能包含多组数据，除了指定数据series之外，还需要指定每个柱形的名称<code>categories</code>,类型为字符串数组。以下是一个堆叠图的数据项：
+</p>
+<h5>demo：</h5>
+{% highlight json %}
+{
+    "categories": [
+        "一月份",
+        "二月份",
+        "三月份"
+    ],
+    "title": "直营店铺",
+    "series": [{
+        "name": "食品",
+        "data": [500,200,100]
+    }, {
+        "name": "交通",
+        "data": [500,250,120]
+    }, {
+        "name": "购物",
+        "data": [500,600,800]
+    },{
+    	"name":"娱乐",
+    	"data":[100,20,300]
+    }]
+}
+{% endhighlight %}
+<div id = "demo3"></div>
+{% highlight html %}
+<div id ="demo3"></div>
+{% endhighlight %}
+{% highlight javascript %}
+$("#demo3").stack(stackObj);
+{% endhighlight %}
+<script>
+var stackObj = {
+    "categories": [
+        "一月份",
+        "二月份",
+        "三月份"
+    ],
+    "title": "直营店铺",
+    "series": [{
+        "name": "食品",
+        "data": [500,200,100]
+    }, {
+        "name": "交通",
+        "data": [500,250,120]
+    }, {
+        "name": "购物",
+        "data": [500,600,800]
+    },{
+    	"name":"娱乐",
+    	"data":[100,20,300]
+    }]
+}
+$("#demo3").stack(stackObj);
+</script>
+<h3 id="pieJSON">2.4）pie中的数据格式如下：</h3>
+<p>饼状图只存在一组数据多个数据点因此不存在series，直接使用data就可以，一个常见的配置如下：</p>
+{% highlight json %}
+{
+	"title" : "title",
+	"data": [
+        ["Firefox",   45.0],
+        ["IE",       26.8],
+        ["chrome", 12.8],
+        ["Safari",    8.5],
+        ["Opera",     6.2],
+        ["Others",   0.7]
+    ],
+    "legend":true
+}
+{% endhighlight %}
+<p>其中<code>legend</code>要求数据类型<code>Boolean</code>型,它用来控制是否显示右侧的小方块图例</p>
+<div class="bs-callout bs-callout-danger"><h5>data数组中是饼状图区域的区域名和对应值，建议按照百分比精确切分，否则可能出现意想不到的样子。</h5></div>
+<h5>demo：</h5>
+{% highlight javscript %}
+$("#demo4").pie('../data/pie.json');
+{% endhighlight%}
+<div id="demo4"></div>
+<script>
+var pieObj = {
+	"title" : "title",
+	"data": [
+        ["Firefox",   45.0],
+        ["IE",       26.8],
+        ["chrome", 12.8],
+        ["Safari",    8.5],
+        ["Opera",     6.2],
+        ["Others",   0.7]
+    ],
+    "legend":true
+};
+$("#demo4").pie(pieObj);
+</script>
+<h3 id="donutJSON">2.5）donut中的数据格式包括以下：</h3>
+<p><code>donut</code>用来显示进度百分比，通常表示已完成百分比等状态。只包含一组数据两个数据点。第一个点表示已完成的数据量，第二点表示未完成的数据点，直接传入对应数据值即可，不需要计算对应的百分比。</p>
+{% highlight json %}
+{
+	"title":"剩余货物",
+	"data":[
+		["完成",10],
+		["未完成",20]
+	],
+	"colors":["#333","#666"]
+}
+{% endhighlight %}
+<h5>demo</h5>
+{% highlight javascript %}
+$("#demo5").donut(donutObj);
+{% endhighlight %}
+<div id ="demo5"></div>
+<div class="bs-callout bs-callout-danger">不建议设置colors项，如果一定要设置只需传入两个颜色参数。</div>
+<script>
+var donutObj = {
+	"title":"剩余货物",
+	"data":[
+		["完成",10],
+		["未完成",20]
+	],
+};
+$("#demo5").donut(donutObj);
+</script>
+<h3 id="updateGraph">3）更新图表</h3>
+<p>初始化方法除了可以用于图表的初始化外，它的重载方法还可以用于数据更新。</p>
+{% highlight javascript %}
+$.line("update",string || object);
+$.pie("update",string || object);
+...
+{% endhighlight %}
+<p>初始化重载函数接受两个参数，参数1是需要进行的图表数据操作（目前仅update，实际上可以通过此方法实现删除效果）,参数2是需要更新成的数据,同样可以指定数据地址或者数据对象，</p>
+<div class="bs-callout bs-callout-danger">注意：此处的数据更新方式是全覆盖，性能瓶颈未知。</div>
+<h5>demo</h5>
+{% highlight html %}
+<div id = "demoUpdate"></div>
+{% endhighlight %}
+{% highlight javascript %}
+$("#demoUpdate").line('./obj.json');
+$("#updateBtn").click(function(){
+	$("#demoUpdate").line('update',changObj);
+});
+{% endhighlight %}
+<div id ="demoUpdate"></div>
+<button id ="updateBtn">更新图表</button>
+<script>
+var obj = {
+        series: [{
+            "name": "Tokyo",
+            "data": [11.0, 6.9, 22.5, 14.5]
+        }, {
+            "name": "New York",
+            "data": [-0.2, 0.8, 22.7, 31.3]
+        }, {
+            "name": "Berlin",
+            "data": [-0.9, 11.6, 22.5, 8.4]
+        }, {
+            "name": "London",
+            "data": [3.9, 4.2, 5.7, 22.5]
+        }]
+    };
+var changObj = {
+	series: [{
+            "name": "Tokyo",
+            "data": [11.0, 16.9, 22.5, 14.5]
+        }, {
+            "name": "New York",
+            "data": [-0.2, 0.8, 22.7, 31.3]
+        }, {
+            "name": "Berlin",
+            "data": [-0.9, 11.6, 12.5, 8.4]
+        }, {
+            "name": "London",
+            "data": [3.9, 4.2, 5.7, 22.5]
+        }]
+}
+$("#demoUpdate").line(obj);
+$("#updateBtn").click(function(){
+	$("#demoUpdate").line('update',changObj);
+});
+</script>
+<h3 id="graphPostion">3)图表位置与大小</h3>
+<p>用户可以通过调节包裹图表的div位置与大小达到调节图表的目的。</p>
+<p>直接修改上例中的div,调用<code>line</code>方法</p>
+{% highlight html %}
+<div id="demoUpdate" style="width:600px;height:300px;margin:0 auto"></div>
+{% endhighlight %}
+<p>得到下图</p>
+<div id="demoUpdate2" style="width:600px;height:300px;margin:0 auto"></div>
+<script>
+var obj = {
+        series: [{
+            "name": "Tokyo",
+            "data": [11.0, 6.9, 22.5, 14.5]
+        }, {
+            "name": "New York",
+            "data": [-0.2, 0.8, 22.7, 31.3]
+        }, {
+            "name": "Berlin",
+            "data": [-0.9, 11.6, 22.5, 8.4]
+        }, {
+            "name": "London",
+            "data": [3.9, 4.2, 5.7, 22.5]
+        }]
+    };
+$("#demoUpdate2").line(obj);
+</script>
+<h3>TODO</h3>
+<p>TODO</p>
+<div class="bs-callout bs-callout-info">在<code>sui-chart</code>使用过程中遇到的相关问题，或者bug报告，欢迎旺旺联系@督布</div>
+
+</div>
